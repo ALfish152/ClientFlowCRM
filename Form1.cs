@@ -39,6 +39,8 @@ namespace ClientFlowCRM
             txtEmail.Clear();
             txtPhone.Clear();
             txtName.Focus();
+
+            MessageBox.Show($"Client '{name}' added!", "Success");
         }
     }
 }
