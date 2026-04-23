@@ -2,9 +2,13 @@ C:\Users\Aeron\source\repos\ClientFlowCRM\ClientFlowCRM\bin\Debug\ClientFlowCRM.
 C:\Users\Aeron\source\repos\ClientFlowCRM\ClientFlowCRM\bin\Debug\ClientFlowCRM.exe
 C:\Users\Aeron\source\repos\ClientFlowCRM\ClientFlowCRM\bin\Debug\ClientFlowCRM.pdb
 C:\Users\Aeron\source\repos\ClientFlowCRM\ClientFlowCRM\obj\Debug\ClientFlowCRM.csproj.AssemblyReference.cache
-C:\Users\Aeron\source\repos\ClientFlowCRM\ClientFlowCRM\obj\Debug\ClientFlowCRM.Form1.resources
 C:\Users\Aeron\source\repos\ClientFlowCRM\ClientFlowCRM\obj\Debug\ClientFlowCRM.Properties.Resources.resources
 C:\Users\Aeron\source\repos\ClientFlowCRM\ClientFlowCRM\obj\Debug\ClientFlowCRM.csproj.GenerateResource.cache
 C:\Users\Aeron\source\repos\ClientFlowCRM\ClientFlowCRM\obj\Debug\ClientFlowCRM.csproj.CoreCompileInputs.cache
 C:\Users\Aeron\source\repos\ClientFlowCRM\ClientFlowCRM\obj\Debug\ClientFlowCRM.exe
 C:\Users\Aeron\source\repos\ClientFlowCRM\ClientFlowCRM\obj\Debug\ClientFlowCRM.pdb
+C:\Users\Aeron\source\repos\ClientFlowCRM\ClientFlowCRM\obj\Debug\ClientFlowCRM.MainDashboard.resources
+C:\Users\Aeron\source\repos\ClientFlowCRM\ClientFlowCRM\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Aeron\source\repos\ClientFlowCRM\ClientFlowCRM\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Aeron\source\repos\ClientFlowCRM\ClientFlowCRM\obj\Debug\ClientFl.E44A1A33.Up2Date
+C:\Users\Aeron\source\repos\ClientFlowCRM\ClientFlowCRM\obj\Debug\ClientFlowCRM.ClientForm.resources
