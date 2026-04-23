@@ -13,7 +13,7 @@ A desktop CRM application for freelancers to manage client contacts and track sa
    → Deal Value
 - Inactivity Alert: Flags clients with no contact >14 days as "At Risk"
 - Revenue Forecast: Weighted sum of (Deal Value × Stage Win Probability)
-## **Dashboard Will Display**
+## **Dashboard Display**
 - Summary stats (Total Clients, Active Deals, Forecasted Revenue, Pending Follow-Ups)
 - Top 5 priority follow-up list
 - At-risk client alert count
