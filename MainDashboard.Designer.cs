@@ -41,15 +41,15 @@
             this.lblPendingSub = new System.Windows.Forms.Label();
             this.lblPending = new System.Windows.Forms.Label();
             this.dgvClients = new System.Windows.Forms.DataGridView();
-            this.btnAddClient = new System.Windows.Forms.Button();
-            this.btnEditClient = new System.Windows.Forms.Button();
-            this.btnDeleteClient = new System.Windows.Forms.Button();
             this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colPhone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCompany = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colSource = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnAddClient = new System.Windows.Forms.Button();
+            this.btnEditClient = new System.Windows.Forms.Button();
+            this.btnDeleteClient = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -133,7 +133,7 @@
             // lblForecastedSub
             // 
             this.lblForecastedSub.AutoSize = true;
-            this.lblForecastedSub.Location = new System.Drawing.Point(32, 56);
+            this.lblForecastedSub.Location = new System.Drawing.Point(26, 56);
             this.lblForecastedSub.Name = "lblForecastedSub";
             this.lblForecastedSub.Size = new System.Drawing.Size(51, 13);
             this.lblForecastedSub.TabIndex = 2;
@@ -143,7 +143,7 @@
             // lblForecasted
             // 
             this.lblForecasted.AutoSize = true;
-            this.lblForecasted.Location = new System.Drawing.Point(32, 28);
+            this.lblForecasted.Location = new System.Drawing.Point(41, 28);
             this.lblForecasted.Name = "lblForecasted";
             this.lblForecasted.Size = new System.Drawing.Size(20, 13);
             this.lblForecasted.TabIndex = 1;
@@ -163,7 +163,7 @@
             // lblPendingSub
             // 
             this.lblPendingSub.AutoSize = true;
-            this.lblPendingSub.Location = new System.Drawing.Point(32, 56);
+            this.lblPendingSub.Location = new System.Drawing.Point(19, 56);
             this.lblPendingSub.Name = "lblPendingSub";
             this.lblPendingSub.Size = new System.Drawing.Size(57, 13);
             this.lblPendingSub.TabIndex = 2;
@@ -173,7 +173,7 @@
             // lblPending
             // 
             this.lblPending.AutoSize = true;
-            this.lblPending.Location = new System.Drawing.Point(32, 28);
+            this.lblPending.Location = new System.Drawing.Point(42, 28);
             this.lblPending.Name = "lblPending";
             this.lblPending.Size = new System.Drawing.Size(13, 13);
             this.lblPending.TabIndex = 1;
@@ -197,38 +197,8 @@
             this.dgvClients.ReadOnly = true;
             this.dgvClients.RowHeadersVisible = false;
             this.dgvClients.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvClients.Size = new System.Drawing.Size(784, 150);
+            this.dgvClients.Size = new System.Drawing.Size(784, 286);
             this.dgvClients.TabIndex = 6;
-            // 
-            // btnAddClient
-            // 
-            this.btnAddClient.Location = new System.Drawing.Point(94, 481);
-            this.btnAddClient.Name = "btnAddClient";
-            this.btnAddClient.Size = new System.Drawing.Size(75, 23);
-            this.btnAddClient.TabIndex = 7;
-            this.btnAddClient.Text = "Add Client";
-            this.btnAddClient.UseVisualStyleBackColor = true;
-            this.btnAddClient.Click += new System.EventHandler(this.btnAddClient_Click);
-            // 
-            // btnEditClient
-            // 
-            this.btnEditClient.Location = new System.Drawing.Point(690, 481);
-            this.btnEditClient.Name = "btnEditClient";
-            this.btnEditClient.Size = new System.Drawing.Size(84, 23);
-            this.btnEditClient.TabIndex = 8;
-            this.btnEditClient.Text = "Edit Selected";
-            this.btnEditClient.UseVisualStyleBackColor = true;
-            this.btnEditClient.Click += new System.EventHandler(this.btnEditClient_Click);
-            // 
-            // btnDeleteClient
-            // 
-            this.btnDeleteClient.Location = new System.Drawing.Point(780, 481);
-            this.btnDeleteClient.Name = "btnDeleteClient";
-            this.btnDeleteClient.Size = new System.Drawing.Size(98, 23);
-            this.btnDeleteClient.TabIndex = 9;
-            this.btnDeleteClient.Text = "Delete Selected";
-            this.btnDeleteClient.UseVisualStyleBackColor = true;
-            this.btnDeleteClient.Click += new System.EventHandler(this.btnDeleteClient_Click);
             // 
             // colId
             // 
@@ -285,6 +255,36 @@
             this.colSource.Name = "colSource";
             this.colSource.ReadOnly = true;
             this.colSource.Width = 110;
+            // 
+            // btnAddClient
+            // 
+            this.btnAddClient.Location = new System.Drawing.Point(94, 481);
+            this.btnAddClient.Name = "btnAddClient";
+            this.btnAddClient.Size = new System.Drawing.Size(75, 23);
+            this.btnAddClient.TabIndex = 7;
+            this.btnAddClient.Text = "Add Client";
+            this.btnAddClient.UseVisualStyleBackColor = true;
+            this.btnAddClient.Click += new System.EventHandler(this.btnAddClient_Click);
+            // 
+            // btnEditClient
+            // 
+            this.btnEditClient.Location = new System.Drawing.Point(690, 481);
+            this.btnEditClient.Name = "btnEditClient";
+            this.btnEditClient.Size = new System.Drawing.Size(84, 23);
+            this.btnEditClient.TabIndex = 8;
+            this.btnEditClient.Text = "Edit Selected";
+            this.btnEditClient.UseVisualStyleBackColor = true;
+            this.btnEditClient.Click += new System.EventHandler(this.btnEditClient_Click);
+            // 
+            // btnDeleteClient
+            // 
+            this.btnDeleteClient.Location = new System.Drawing.Point(780, 481);
+            this.btnDeleteClient.Name = "btnDeleteClient";
+            this.btnDeleteClient.Size = new System.Drawing.Size(98, 23);
+            this.btnDeleteClient.TabIndex = 9;
+            this.btnDeleteClient.Text = "Delete Selected";
+            this.btnDeleteClient.UseVisualStyleBackColor = true;
+            this.btnDeleteClient.Click += new System.EventHandler(this.btnDeleteClient_Click);
             // 
             // MainDashboard
             // 

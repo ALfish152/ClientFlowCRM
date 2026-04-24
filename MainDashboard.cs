@@ -22,8 +22,11 @@ namespace ClientFlowCRM
 
         private void ClearSelection()
         {
-            dgvClients.ClearSelection();
-            dgvClients.CurrentCell = null;
+            if (dgvClients.Rows.Count > 0)
+            {
+                dgvClients.ClearSelection();
+                dgvClients.CurrentCell = null;
+            }
         }
 
         private void RefreshAll()
@@ -52,17 +55,21 @@ namespace ClientFlowCRM
         private void RefreshGrid()
         {
             dgvClients.DataSource = null;
-            dgvClients.DataSource = _clients;
 
-            dgvClients.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
-            if (dgvClients.Columns.Count >= 6)
+            if (_clients != null && _clients.Count > 0)
             {
-                dgvClients.Columns[0].Width = 40;
-                dgvClients.Columns[1].Width = 160;
-                dgvClients.Columns[2].Width = 190;
-                dgvClients.Columns[3].Width = 120;
-                dgvClients.Columns[4].Width = 160;
-                dgvClients.Columns[5].Width = 110;
+                dgvClients.DataSource = _clients;
+
+                dgvClients.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
+                if (dgvClients.Columns.Count >= 6)
+                {
+                    dgvClients.Columns[0].Width = 40;
+                    dgvClients.Columns[1].Width = 160;
+                    dgvClients.Columns[2].Width = 190;
+                    dgvClients.Columns[3].Width = 120;
+                    dgvClients.Columns[4].Width = 160;
+                    dgvClients.Columns[5].Width = 110;
+                }
             }
         }
 
