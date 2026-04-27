@@ -73,5 +73,37 @@ namespace ClientFlowCRM
             this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
+
+        private void txtName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ClientForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Paint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+
+            e.Graphics.FillEllipse(new SolidBrush(Color.FromArgb(238, 237, 254)),
+                0, 0, 40, 40);
+            e.Graphics.DrawEllipse(new Pen(Color.FromArgb(83, 74, 183), 2),
+                13, 6, 14, 14);
+            e.Graphics.DrawArc(new Pen(Color.FromArgb(83, 74, 183), 2),
+                6, 22, 28, 20, 180, 180);
+        }
+
+        private void label6_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
