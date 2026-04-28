@@ -136,5 +136,65 @@ namespace ClientFlowCRM
                 MessageBox.Show("Client deleted.", "Success");
             }
         }
+
+        private void MainDashboard_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvClients_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void lblTotalClients_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblTotalClientsSub_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblActiveDealsSub_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblPendingSub_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblPending_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblForecastedSub_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblActiveDeals_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox4_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblForecasted_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
