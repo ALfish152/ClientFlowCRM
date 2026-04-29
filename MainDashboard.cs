@@ -4,6 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using ClientFlowCRM.Algorithms;
+using System.Drawing;
 
 namespace ClientFlowCRM
 {
@@ -11,6 +13,8 @@ namespace ClientFlowCRM
     {
         private List<Client> _clients;
         private int _nextId;
+        private int _nextDealId = 1;
+        private int _nextInteractionId = 1;
 
         public MainDashboard()
         {
@@ -29,46 +33,79 @@ namespace ClientFlowCRM
             }
         }
 
+        private LeadScoringModel _scorer = new LeadScoringModel();
+        private RevenueForecaster _forecaster = new RevenueForecaster();
+        private FollowUpQueue _queue = new FollowUpQueue();
+
         private void RefreshAll()
         {
+            UpdateScores();
             RefreshStats();
             RefreshGrid();
+            UpdatePriorityList();
             ClearSelection();
+        }
+
+        private void UpdateScores()
+        {
+            foreach (var client in _clients)
+            {
+                client.Score = _scorer.CalculateScore(client);
+                client.Temperature = _scorer.GetTemperature(client.Score);
+            }
+        }
+
+        private void UpdatePriorityList()
+        {
+            lstPriority.Items.Clear();
+            var top5 = _queue.GetTopFive(_clients);
+            foreach (var c in top5)
+            {
+                string days = c.LastContactDate.HasValue
+                    ? $"{(DateTime.Now - c.LastContactDate.Value).Days}d ago"
+                    : "Never";
+                lstPriority.Items.Add($"{c.Name} ({c.Temperature}) - {days}");
+            }
         }
 
         private void RefreshStats()
         {
+            var allDeals = _clients.SelectMany(c => c.Deals).Where(d => d.IsActive).ToList();
+            int atRisk = _clients.Count(c => c.IsAtRisk);
+
             lblTotalClients.Text = _clients.Count.ToString();
-            lblTotalClientsSub.Text = "Total";
-
-            int deals = _clients.Count; // Temporary lang, aayusin pa 
-            lblActiveDeals.Text = deals.ToString();
-            lblActiveDealsSub.Text = "Active";
-
-            lblForecasted.Text = "₱0";
-            lblForecastedSub.Text = "Revenue";
-
-            lblPending.Text = "0";
-            lblPendingSub.Text = "Follow-ups";
+            lblActiveDeals.Text = allDeals.Count.ToString();
+            lblForecasted.Text = $"₱{_forecaster.Calculate(allDeals):N0}";
+            lblPending.Text = _queue.GetTopFive(_clients).Count.ToString();
+            lblAtRiskCount.Text = $"{atRisk} at risk";
         }
 
         private void RefreshGrid()
         {
             dgvClients.DataSource = null;
+            dgvClients.DataSource = _clients;
 
-            if (_clients != null && _clients.Count > 0)
+            dgvClients.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
+            if (dgvClients.Columns.Count >= 6)
             {
-                dgvClients.DataSource = _clients;
+                dgvClients.Columns[0].Width = 40;
+                dgvClients.Columns[1].Width = 160;
+                dgvClients.Columns[2].Width = 190;
+                dgvClients.Columns[3].Width = 120;
+                dgvClients.Columns[4].Width = 160;
+                dgvClients.Columns[5].Width = 110;
+            }
 
-                dgvClients.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
-                if (dgvClients.Columns.Count >= 6)
+            foreach (DataGridViewRow row in dgvClients.Rows)
+            {
+                if (row.DataBoundItem is Client client)
                 {
-                    dgvClients.Columns[0].Width = 40;
-                    dgvClients.Columns[1].Width = 160;
-                    dgvClients.Columns[2].Width = 190;
-                    dgvClients.Columns[3].Width = 120;
-                    dgvClients.Columns[4].Width = 160;
-                    dgvClients.Columns[5].Width = 110;
+                    if (client.Temperature == "Hot")
+                        row.DefaultCellStyle.BackColor = Color.LightPink;
+                    else if (client.Temperature == "Warm")
+                        row.DefaultCellStyle.BackColor = Color.LightGoldenrodYellow;
+                    else
+                        row.DefaultCellStyle.BackColor = Color.LightBlue;
                 }
             }
         }
@@ -142,11 +179,6 @@ namespace ClientFlowCRM
 
         }
 
-        private void dgvClients_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void lblTotalClients_Click(object sender, EventArgs e)
         {
 
@@ -195,6 +227,63 @@ namespace ClientFlowCRM
         private void lblForecasted_Click(object sender, EventArgs e)
         {
 
+        }
+
+
+
+        private void dgvClients_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && dgvClients.Rows[e.RowIndex].DataBoundItem is Client client)
+            {
+                var form = new ClientDetailForm(client, _clients, _nextDealId, _nextInteractionId);
+                form.ShowDialog();
+
+                // Update IDs in case new deals/interactions were added
+                if (_clients.SelectMany(c => c.Deals).Any())
+                    _nextDealId = _clients.SelectMany(c => c.Deals).Max(d => d.Id) + 1;
+                if (_clients.SelectMany(c => c.Interactions).Any())
+                    _nextInteractionId = _clients.SelectMany(c => c.Interactions).Max(i => i.Id) + 1;
+
+                DataManager.SaveData(_clients);
+                RefreshAll();
+            }
+        }
+
+        private void btnExportCSV_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog dialog = new SaveFileDialog
+            {
+                Filter = "CSV Files|*.csv",
+                FileName = "clients_export.csv"
+            };
+
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                DataManager.ExportToCSV(_clients, dialog.FileName);
+                MessageBox.Show("Exported successfully!", "Success");
+            }
+        }
+
+        private void btnViewDetails_Click(object sender, EventArgs e)
+        {
+            if (dgvClients.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Select a client first.", "Info");
+                return;
+            }
+
+            Client client = (Client)dgvClients.SelectedRows[0].DataBoundItem;
+            var form = new ClientDetailForm(client, _clients, _nextDealId, _nextInteractionId);
+            form.ShowDialog();
+
+            // Update IDs after returning
+            if (_clients.SelectMany(c => c.Deals).Any())
+                _nextDealId = _clients.SelectMany(c => c.Deals).Max(d => d.Id) + 1;
+            if (_clients.SelectMany(c => c.Interactions).Any())
+                _nextInteractionId = _clients.SelectMany(c => c.Interactions).Max(i => i.Id) + 1;
+
+            DataManager.SaveData(_clients);
+            RefreshAll();
         }
     }
 }

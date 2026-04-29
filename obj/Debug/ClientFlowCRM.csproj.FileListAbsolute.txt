@@ -12,3 +12,6 @@ C:\Users\Aeron\source\repos\ClientFlowCRM\ClientFlowCRM\bin\Debug\Newtonsoft.Jso
 C:\Users\Aeron\source\repos\ClientFlowCRM\ClientFlowCRM\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Aeron\source\repos\ClientFlowCRM\ClientFlowCRM\obj\Debug\ClientFl.E44A1A33.Up2Date
 C:\Users\Aeron\source\repos\ClientFlowCRM\ClientFlowCRM\obj\Debug\ClientFlowCRM.ClientForm.resources
+C:\Users\Aeron\source\repos\ClientFlowCRM\ClientFlowCRM\obj\Debug\ClientFlowCRM.ClientDetailForm.resources
+C:\Users\Aeron\source\repos\ClientFlowCRM\ClientFlowCRM\obj\Debug\ClientFlowCRM.DealForm.resources
+C:\Users\Aeron\source\repos\ClientFlowCRM\ClientFlowCRM\obj\Debug\ClientFlowCRM.InteractionForm.resources

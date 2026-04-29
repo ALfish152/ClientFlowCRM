@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lblTotalClientsSub = new System.Windows.Forms.Label();
             this.lblTotalClients = new System.Windows.Forms.Label();
@@ -42,15 +42,19 @@
             this.lblPendingSub = new System.Windows.Forms.Label();
             this.lblPending = new System.Windows.Forms.Label();
             this.dgvClients = new System.Windows.Forms.DataGridView();
-            this.btnAddClient = new System.Windows.Forms.Button();
-            this.btnEditClient = new System.Windows.Forms.Button();
-            this.btnDeleteClient = new System.Windows.Forms.Button();
             this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colPhone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCompany = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colSource = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnAddClient = new System.Windows.Forms.Button();
+            this.btnEditClient = new System.Windows.Forms.Button();
+            this.btnDeleteClient = new System.Windows.Forms.Button();
+            this.lstPriority = new System.Windows.Forms.ListBox();
+            this.lblAtRiskCount = new System.Windows.Forms.Label();
+            this.btnExportCSV = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -65,11 +69,9 @@
             this.groupBox1.Controls.Add(this.lblTotalClients);
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(85)))), ((int)(((byte)(99)))));
-            this.groupBox1.Location = new System.Drawing.Point(13, 25);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox1.Location = new System.Drawing.Point(10, 20);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(304, 109);
+            this.groupBox1.Size = new System.Drawing.Size(228, 89);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "TOTAL CLIENTS";
@@ -78,10 +80,9 @@
             // 
             this.lblTotalClientsSub.AutoSize = true;
             this.lblTotalClientsSub.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(85)))), ((int)(((byte)(99)))));
-            this.lblTotalClientsSub.Location = new System.Drawing.Point(8, 83);
-            this.lblTotalClientsSub.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTotalClientsSub.Location = new System.Drawing.Point(6, 67);
             this.lblTotalClientsSub.Name = "lblTotalClientsSub";
-            this.lblTotalClientsSub.Size = new System.Drawing.Size(49, 23);
+            this.lblTotalClientsSub.Size = new System.Drawing.Size(42, 19);
             this.lblTotalClientsSub.TabIndex = 2;
             this.lblTotalClientsSub.Text = "Total";
             this.lblTotalClientsSub.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -92,11 +93,10 @@
             this.lblTotalClients.AutoSize = true;
             this.lblTotalClients.Font = new System.Drawing.Font("Microsoft Sans Serif", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotalClients.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(165)))), ((int)(((byte)(250)))));
-            this.lblTotalClients.Location = new System.Drawing.Point(8, 34);
-            this.lblTotalClients.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblTotalClients.MaximumSize = new System.Drawing.Size(50, 52);
+            this.lblTotalClients.Location = new System.Drawing.Point(6, 28);
+            this.lblTotalClients.MaximumSize = new System.Drawing.Size(38, 42);
             this.lblTotalClients.Name = "lblTotalClients";
-            this.lblTotalClients.Size = new System.Drawing.Size(40, 42);
+            this.lblTotalClients.Size = new System.Drawing.Size(33, 36);
             this.lblTotalClients.TabIndex = 1;
             this.lblTotalClients.Text = "0";
             this.lblTotalClients.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -110,11 +110,9 @@
             this.groupBox2.Controls.Add(this.lblActiveDeals);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(85)))), ((int)(((byte)(99)))));
-            this.groupBox2.Location = new System.Drawing.Point(336, 25);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox2.Location = new System.Drawing.Point(252, 20);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox2.Size = new System.Drawing.Size(304, 109);
+            this.groupBox2.Size = new System.Drawing.Size(228, 89);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "ACTIVE DEALS";
@@ -123,10 +121,9 @@
             // 
             this.lblActiveDealsSub.AutoSize = true;
             this.lblActiveDealsSub.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(85)))), ((int)(((byte)(99)))));
-            this.lblActiveDealsSub.Location = new System.Drawing.Point(8, 83);
-            this.lblActiveDealsSub.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblActiveDealsSub.Location = new System.Drawing.Point(6, 67);
             this.lblActiveDealsSub.Name = "lblActiveDealsSub";
-            this.lblActiveDealsSub.Size = new System.Drawing.Size(61, 20);
+            this.lblActiveDealsSub.Size = new System.Drawing.Size(52, 17);
             this.lblActiveDealsSub.TabIndex = 2;
             this.lblActiveDealsSub.Text = "Active";
             this.lblActiveDealsSub.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -137,10 +134,9 @@
             this.lblActiveDeals.AutoSize = true;
             this.lblActiveDeals.Font = new System.Drawing.Font("Microsoft Sans Serif", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblActiveDeals.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(211)))), ((int)(((byte)(153)))));
-            this.lblActiveDeals.Location = new System.Drawing.Point(8, 34);
-            this.lblActiveDeals.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblActiveDeals.Location = new System.Drawing.Point(6, 28);
             this.lblActiveDeals.Name = "lblActiveDeals";
-            this.lblActiveDeals.Size = new System.Drawing.Size(40, 42);
+            this.lblActiveDeals.Size = new System.Drawing.Size(33, 36);
             this.lblActiveDeals.TabIndex = 1;
             this.lblActiveDeals.Text = "0";
             this.lblActiveDeals.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -153,11 +149,9 @@
             this.groupBox3.Controls.Add(this.lblForecasted);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(85)))), ((int)(((byte)(99)))));
-            this.groupBox3.Location = new System.Drawing.Point(983, 25);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox3.Location = new System.Drawing.Point(737, 20);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox3.Size = new System.Drawing.Size(304, 109);
+            this.groupBox3.Size = new System.Drawing.Size(228, 89);
             this.groupBox3.TabIndex = 4;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "FORECASTED";
@@ -166,10 +160,9 @@
             // 
             this.lblForecastedSub.AutoSize = true;
             this.lblForecastedSub.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(85)))), ((int)(((byte)(99)))));
-            this.lblForecastedSub.Location = new System.Drawing.Point(8, 85);
-            this.lblForecastedSub.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblForecastedSub.Location = new System.Drawing.Point(6, 69);
             this.lblForecastedSub.Name = "lblForecastedSub";
-            this.lblForecastedSub.Size = new System.Drawing.Size(81, 20);
+            this.lblForecastedSub.Size = new System.Drawing.Size(72, 17);
             this.lblForecastedSub.TabIndex = 2;
             this.lblForecastedSub.Text = "Revenue";
             this.lblForecastedSub.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -180,10 +173,9 @@
             this.lblForecasted.AutoSize = true;
             this.lblForecasted.Font = new System.Drawing.Font("Microsoft Sans Serif", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblForecasted.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(139)))), ((int)(((byte)(250)))));
-            this.lblForecasted.Location = new System.Drawing.Point(8, 34);
-            this.lblForecasted.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblForecasted.Location = new System.Drawing.Point(6, 28);
             this.lblForecasted.Name = "lblForecasted";
-            this.lblForecasted.Size = new System.Drawing.Size(66, 42);
+            this.lblForecasted.Size = new System.Drawing.Size(54, 36);
             this.lblForecasted.TabIndex = 1;
             this.lblForecasted.Text = "₱0";
             this.lblForecasted.Click += new System.EventHandler(this.lblForecasted_Click);
@@ -195,11 +187,9 @@
             this.groupBox4.Controls.Add(this.lblPending);
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(85)))), ((int)(((byte)(99)))));
-            this.groupBox4.Location = new System.Drawing.Point(662, 25);
-            this.groupBox4.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox4.Location = new System.Drawing.Point(496, 20);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox4.Size = new System.Drawing.Size(304, 109);
+            this.groupBox4.Size = new System.Drawing.Size(228, 89);
             this.groupBox4.TabIndex = 5;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "PENDING";
@@ -210,10 +200,9 @@
             this.lblPendingSub.AutoSize = true;
             this.lblPendingSub.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(27)))), ((int)(((byte)(39)))));
             this.lblPendingSub.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(85)))), ((int)(((byte)(99)))));
-            this.lblPendingSub.Location = new System.Drawing.Point(8, 83);
-            this.lblPendingSub.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblPendingSub.Location = new System.Drawing.Point(6, 67);
             this.lblPendingSub.Name = "lblPendingSub";
-            this.lblPendingSub.Size = new System.Drawing.Size(100, 20);
+            this.lblPendingSub.Size = new System.Drawing.Size(85, 17);
             this.lblPendingSub.TabIndex = 2;
             this.lblPendingSub.Text = "Follow-ups";
             this.lblPendingSub.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -224,10 +213,9 @@
             this.lblPending.AutoSize = true;
             this.lblPending.Font = new System.Drawing.Font("Microsoft Sans Serif", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPending.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(191)))), ((int)(((byte)(36)))));
-            this.lblPending.Location = new System.Drawing.Point(8, 34);
-            this.lblPending.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblPending.Location = new System.Drawing.Point(6, 28);
             this.lblPending.Name = "lblPending";
-            this.lblPending.Size = new System.Drawing.Size(40, 42);
+            this.lblPending.Size = new System.Drawing.Size(33, 36);
             this.lblPending.TabIndex = 1;
             this.lblPending.Text = "0";
             this.lblPending.Click += new System.EventHandler(this.lblPending_Click);
@@ -239,15 +227,15 @@
             this.dgvClients.AllowUserToResizeRows = false;
             this.dgvClients.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(27)))), ((int)(((byte)(39)))));
             this.dgvClients.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(17)))), ((int)(((byte)(23)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(85)))), ((int)(((byte)(99)))));
-            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(17)))), ((int)(((byte)(23)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvClients.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(17)))), ((int)(((byte)(23)))));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(85)))), ((int)(((byte)(99)))));
+            dataGridViewCellStyle6.Padding = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(17)))), ((int)(((byte)(23)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvClients.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvClients.ColumnHeadersHeight = 38;
             this.dgvClients.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvClients.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -259,66 +247,15 @@
             this.colSource});
             this.dgvClients.EnableHeadersVisualStyles = false;
             this.dgvClients.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(37)))), ((int)(((byte)(54)))));
-            this.dgvClients.Location = new System.Drawing.Point(25, 175);
-            this.dgvClients.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvClients.Location = new System.Drawing.Point(19, 142);
             this.dgvClients.Name = "dgvClients";
             this.dgvClients.ReadOnly = true;
             this.dgvClients.RowHeadersVisible = false;
             this.dgvClients.RowHeadersWidth = 51;
             this.dgvClients.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvClients.Size = new System.Drawing.Size(1262, 443);
+            this.dgvClients.Size = new System.Drawing.Size(946, 360);
             this.dgvClients.TabIndex = 6;
-            this.dgvClients.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvClients_CellContentClick);
-            // 
-            // btnAddClient
-            // 
-            this.btnAddClient.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(99)))), ((int)(((byte)(235)))));
-            this.btnAddClient.Cursor = System.Windows.Forms.Cursors.Cross;
-            this.btnAddClient.FlatAppearance.BorderSize = 0;
-            this.btnAddClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddClient.Font = new System.Drawing.Font("Segoe UI", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddClient.ForeColor = System.Drawing.Color.White;
-            this.btnAddClient.Location = new System.Drawing.Point(755, 626);
-            this.btnAddClient.Margin = new System.Windows.Forms.Padding(4);
-            this.btnAddClient.Name = "btnAddClient";
-            this.btnAddClient.Size = new System.Drawing.Size(167, 41);
-            this.btnAddClient.TabIndex = 7;
-            this.btnAddClient.Text = "+ Add Client";
-            this.btnAddClient.UseCompatibleTextRendering = true;
-            this.btnAddClient.UseVisualStyleBackColor = false;
-            this.btnAddClient.Click += new System.EventHandler(this.btnAddClient_Click);
-            // 
-            // btnEditClient
-            // 
-            this.btnEditClient.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(58)))), ((int)(((byte)(95)))));
-            this.btnEditClient.FlatAppearance.BorderSize = 0;
-            this.btnEditClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEditClient.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditClient.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(165)))), ((int)(((byte)(250)))));
-            this.btnEditClient.Location = new System.Drawing.Point(940, 626);
-            this.btnEditClient.Margin = new System.Windows.Forms.Padding(4);
-            this.btnEditClient.Name = "btnEditClient";
-            this.btnEditClient.Size = new System.Drawing.Size(155, 41);
-            this.btnEditClient.TabIndex = 8;
-            this.btnEditClient.Text = "Edit Selected";
-            this.btnEditClient.UseVisualStyleBackColor = false;
-            this.btnEditClient.Click += new System.EventHandler(this.btnEditClient_Click);
-            // 
-            // btnDeleteClient
-            // 
-            this.btnDeleteClient.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            this.btnDeleteClient.FlatAppearance.BorderSize = 0;
-            this.btnDeleteClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDeleteClient.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeleteClient.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(165)))), ((int)(((byte)(165)))));
-            this.btnDeleteClient.Location = new System.Drawing.Point(1119, 626);
-            this.btnDeleteClient.Margin = new System.Windows.Forms.Padding(4);
-            this.btnDeleteClient.Name = "btnDeleteClient";
-            this.btnDeleteClient.Size = new System.Drawing.Size(168, 41);
-            this.btnDeleteClient.TabIndex = 9;
-            this.btnDeleteClient.Text = "Delete Selected";
-            this.btnDeleteClient.UseVisualStyleBackColor = false;
-            this.btnDeleteClient.Click += new System.EventHandler(this.btnDeleteClient_Click);
+            this.dgvClients.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvClients_CellContentDoubleClick);
             // 
             // colId
             // 
@@ -380,12 +317,113 @@
             this.colSource.Name = "colSource";
             this.colSource.ReadOnly = true;
             // 
+            // btnAddClient
+            // 
+            this.btnAddClient.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(99)))), ((int)(((byte)(235)))));
+            this.btnAddClient.Cursor = System.Windows.Forms.Cursors.Cross;
+            this.btnAddClient.FlatAppearance.BorderSize = 0;
+            this.btnAddClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddClient.Font = new System.Drawing.Font("Segoe UI", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddClient.ForeColor = System.Drawing.Color.White;
+            this.btnAddClient.Location = new System.Drawing.Point(566, 509);
+            this.btnAddClient.Name = "btnAddClient";
+            this.btnAddClient.Size = new System.Drawing.Size(125, 33);
+            this.btnAddClient.TabIndex = 7;
+            this.btnAddClient.Text = "+ Add Client";
+            this.btnAddClient.UseCompatibleTextRendering = true;
+            this.btnAddClient.UseVisualStyleBackColor = false;
+            this.btnAddClient.Click += new System.EventHandler(this.btnAddClient_Click);
+            // 
+            // btnEditClient
+            // 
+            this.btnEditClient.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(58)))), ((int)(((byte)(95)))));
+            this.btnEditClient.FlatAppearance.BorderSize = 0;
+            this.btnEditClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditClient.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditClient.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(165)))), ((int)(((byte)(250)))));
+            this.btnEditClient.Location = new System.Drawing.Point(705, 509);
+            this.btnEditClient.Name = "btnEditClient";
+            this.btnEditClient.Size = new System.Drawing.Size(116, 33);
+            this.btnEditClient.TabIndex = 8;
+            this.btnEditClient.Text = "Edit Selected";
+            this.btnEditClient.UseVisualStyleBackColor = false;
+            this.btnEditClient.Click += new System.EventHandler(this.btnEditClient_Click);
+            // 
+            // btnDeleteClient
+            // 
+            this.btnDeleteClient.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            this.btnDeleteClient.FlatAppearance.BorderSize = 0;
+            this.btnDeleteClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeleteClient.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteClient.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(165)))), ((int)(((byte)(165)))));
+            this.btnDeleteClient.Location = new System.Drawing.Point(839, 509);
+            this.btnDeleteClient.Name = "btnDeleteClient";
+            this.btnDeleteClient.Size = new System.Drawing.Size(126, 33);
+            this.btnDeleteClient.TabIndex = 9;
+            this.btnDeleteClient.Text = "Delete Selected";
+            this.btnDeleteClient.UseVisualStyleBackColor = false;
+            this.btnDeleteClient.Click += new System.EventHandler(this.btnDeleteClient_Click);
+            // 
+            // lstPriority
+            // 
+            this.lstPriority.FormattingEnabled = true;
+            this.lstPriority.Location = new System.Drawing.Point(59, 398);
+            this.lstPriority.Name = "lstPriority";
+            this.lstPriority.Size = new System.Drawing.Size(120, 95);
+            this.lstPriority.TabIndex = 10;
+            // 
+            // lblAtRiskCount
+            // 
+            this.lblAtRiskCount.AutoSize = true;
+            this.lblAtRiskCount.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lblAtRiskCount.Location = new System.Drawing.Point(56, 382);
+            this.lblAtRiskCount.Name = "lblAtRiskCount";
+            this.lblAtRiskCount.Size = new System.Drawing.Size(44, 13);
+            this.lblAtRiskCount.TabIndex = 11;
+            this.lblAtRiskCount.Text = "0 at risk";
+            // 
+            // btnExportCSV
+            // 
+            this.btnExportCSV.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(99)))), ((int)(((byte)(235)))));
+            this.btnExportCSV.Cursor = System.Windows.Forms.Cursors.Cross;
+            this.btnExportCSV.FlatAppearance.BorderSize = 0;
+            this.btnExportCSV.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExportCSV.Font = new System.Drawing.Font("Segoe UI", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExportCSV.ForeColor = System.Drawing.Color.White;
+            this.btnExportCSV.Location = new System.Drawing.Point(768, 427);
+            this.btnExportCSV.Name = "btnExportCSV";
+            this.btnExportCSV.Size = new System.Drawing.Size(125, 33);
+            this.btnExportCSV.TabIndex = 12;
+            this.btnExportCSV.Text = "Export CSV";
+            this.btnExportCSV.UseCompatibleTextRendering = true;
+            this.btnExportCSV.UseVisualStyleBackColor = false;
+            this.btnExportCSV.Click += new System.EventHandler(this.btnExportCSV_Click);
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(58)))), ((int)(((byte)(95)))));
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(165)))), ((int)(((byte)(250)))));
+            this.button1.Location = new System.Drawing.Point(429, 508);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(116, 33);
+            this.button1.TabIndex = 13;
+            this.button1.Text = "View Details";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.btnViewDetails_Click);
+            // 
             // MainDashboard
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(17)))), ((int)(((byte)(23)))));
-            this.ClientSize = new System.Drawing.Size(1312, 690);
+            this.ClientSize = new System.Drawing.Size(984, 561);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnExportCSV);
+            this.Controls.Add(this.lblAtRiskCount);
+            this.Controls.Add(this.lstPriority);
             this.Controls.Add(this.btnDeleteClient);
             this.Controls.Add(this.btnEditClient);
             this.Controls.Add(this.btnAddClient);
@@ -394,7 +432,6 @@
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainDashboard";
             this.Text = "ClientFlow CRM";
             this.Load += new System.EventHandler(this.MainDashboard_Load);
@@ -408,6 +445,7 @@
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClients)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -435,6 +473,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colPhone;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCompany;
         private System.Windows.Forms.DataGridViewTextBoxColumn colSource;
+        private System.Windows.Forms.ListBox lstPriority;
+        private System.Windows.Forms.Label lblAtRiskCount;
+        private System.Windows.Forms.Button btnExportCSV;
+        private System.Windows.Forms.Button button1;
     }
 }
 

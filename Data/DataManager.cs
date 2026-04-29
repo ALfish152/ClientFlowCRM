@@ -51,5 +51,22 @@ namespace ClientFlowCRM.Data
                 return new List<Client>();
             }
         }
+
+        public static bool ExportToCSV(List<Client> clients, string filePath)
+        {
+            try
+            {
+                using (var writer = new StreamWriter(filePath))
+                {
+                    writer.WriteLine("ID,Name,Email,Phone,Company,Source,Score,Temperature,DealValue,Interactions");
+                    foreach (var c in clients)
+                    {
+                        writer.WriteLine($"{c.Id},{c.Name},{c.Email},{c.Phone},{c.Company},{c.Source},{c.Score},{c.Temperature},{c.TotalDealValue},{c.InteractionCount}");
+                    }
+                }
+                return true;
+            }
+            catch { return false; }
+        }
     }
 }

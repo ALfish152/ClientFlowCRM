@@ -14,6 +14,11 @@ namespace ClientFlowCRM.Models
         private string _company;
         private string _source;
 
+        public List<Deal> Deals { get; set; } = new List<Deal>();
+        public List<Interaction> Interactions { get; set; } = new List<Interaction>();
+        public double Score { get; set; }
+        public string Temperature { get; set; } = "Cold";
+
         public int Id { get; set; }
 
         public string Name
@@ -53,6 +58,43 @@ namespace ClientFlowCRM.Models
             _phone = "";
             _company = "";
             _source = "Website";
+        }
+
+        public decimal TotalDealValue
+        {
+            get
+            {
+                decimal total = 0;
+                foreach (var deal in Deals)
+                {
+                    if (deal.Stage != "Lost")
+                        total += deal.Value;
+                }
+                return total;
+            }
+        }
+
+        public int InteractionCount => Interactions.Count;
+
+        public DateTime? LastContactDate
+        {
+            get
+            {
+                if (Interactions.Count == 0) return null;
+                DateTime latest = Interactions[0].Timestamp;
+                foreach (var i in Interactions)
+                    if (i.Timestamp > latest) latest = i.Timestamp;
+                return latest;
+            }
+        }
+
+        public bool IsAtRisk
+        {
+            get
+            {
+                if (!LastContactDate.HasValue) return true;
+                return (DateTime.Now - LastContactDate.Value).TotalDays > 14;
+            }
         }
     }
 }
