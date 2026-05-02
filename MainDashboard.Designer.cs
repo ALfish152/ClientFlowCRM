@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lblTotalClientsSub = new System.Windows.Forms.Label();
             this.lblTotalClients = new System.Windows.Forms.Label();
@@ -69,9 +69,9 @@
             this.groupBox1.Controls.Add(this.lblTotalClients);
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(85)))), ((int)(((byte)(99)))));
-            this.groupBox1.Location = new System.Drawing.Point(10, 20);
+            this.groupBox1.Location = new System.Drawing.Point(12, 74);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(228, 89);
+            this.groupBox1.Size = new System.Drawing.Size(262, 89);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "TOTAL CLIENTS";
@@ -110,12 +110,13 @@
             this.groupBox2.Controls.Add(this.lblActiveDeals);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(85)))), ((int)(((byte)(99)))));
-            this.groupBox2.Location = new System.Drawing.Point(252, 20);
+            this.groupBox2.Location = new System.Drawing.Point(315, 74);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(228, 89);
+            this.groupBox2.Size = new System.Drawing.Size(281, 89);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "ACTIVE DEALS";
+            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
             // lblActiveDealsSub
             // 
@@ -149,9 +150,9 @@
             this.groupBox3.Controls.Add(this.lblForecasted);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(85)))), ((int)(((byte)(99)))));
-            this.groupBox3.Location = new System.Drawing.Point(737, 20);
+            this.groupBox3.Location = new System.Drawing.Point(954, 74);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(228, 89);
+            this.groupBox3.Size = new System.Drawing.Size(291, 89);
             this.groupBox3.TabIndex = 4;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "FORECASTED";
@@ -187,9 +188,9 @@
             this.groupBox4.Controls.Add(this.lblPending);
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(85)))), ((int)(((byte)(99)))));
-            this.groupBox4.Location = new System.Drawing.Point(496, 20);
+            this.groupBox4.Location = new System.Drawing.Point(642, 74);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(228, 89);
+            this.groupBox4.Size = new System.Drawing.Size(262, 89);
             this.groupBox4.TabIndex = 5;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "PENDING";
@@ -227,15 +228,15 @@
             this.dgvClients.AllowUserToResizeRows = false;
             this.dgvClients.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(27)))), ((int)(((byte)(39)))));
             this.dgvClients.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(17)))), ((int)(((byte)(23)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(85)))), ((int)(((byte)(99)))));
-            dataGridViewCellStyle6.Padding = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(17)))), ((int)(((byte)(23)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvClients.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(17)))), ((int)(((byte)(23)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(85)))), ((int)(((byte)(99)))));
+            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(17)))), ((int)(((byte)(23)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvClients.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvClients.ColumnHeadersHeight = 38;
             this.dgvClients.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvClients.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -247,13 +248,13 @@
             this.colSource});
             this.dgvClients.EnableHeadersVisualStyles = false;
             this.dgvClients.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(37)))), ((int)(((byte)(54)))));
-            this.dgvClients.Location = new System.Drawing.Point(19, 142);
+            this.dgvClients.Location = new System.Drawing.Point(219, 189);
             this.dgvClients.Name = "dgvClients";
             this.dgvClients.ReadOnly = true;
             this.dgvClients.RowHeadersVisible = false;
             this.dgvClients.RowHeadersWidth = 51;
             this.dgvClients.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvClients.Size = new System.Drawing.Size(946, 360);
+            this.dgvClients.Size = new System.Drawing.Size(1026, 360);
             this.dgvClients.TabIndex = 6;
             this.dgvClients.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvClients_CellContentDoubleClick);
             // 
@@ -325,7 +326,7 @@
             this.btnAddClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddClient.Font = new System.Drawing.Font("Segoe UI", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddClient.ForeColor = System.Drawing.Color.White;
-            this.btnAddClient.Location = new System.Drawing.Point(566, 509);
+            this.btnAddClient.Location = new System.Drawing.Point(1120, 12);
             this.btnAddClient.Name = "btnAddClient";
             this.btnAddClient.Size = new System.Drawing.Size(125, 33);
             this.btnAddClient.TabIndex = 7;
@@ -341,7 +342,7 @@
             this.btnEditClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEditClient.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEditClient.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(165)))), ((int)(((byte)(250)))));
-            this.btnEditClient.Location = new System.Drawing.Point(705, 509);
+            this.btnEditClient.Location = new System.Drawing.Point(998, 555);
             this.btnEditClient.Name = "btnEditClient";
             this.btnEditClient.Size = new System.Drawing.Size(116, 33);
             this.btnEditClient.TabIndex = 8;
@@ -356,7 +357,7 @@
             this.btnDeleteClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDeleteClient.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDeleteClient.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(165)))), ((int)(((byte)(165)))));
-            this.btnDeleteClient.Location = new System.Drawing.Point(839, 509);
+            this.btnDeleteClient.Location = new System.Drawing.Point(1120, 555);
             this.btnDeleteClient.Name = "btnDeleteClient";
             this.btnDeleteClient.Size = new System.Drawing.Size(126, 33);
             this.btnDeleteClient.TabIndex = 9;
@@ -366,21 +367,24 @@
             // 
             // lstPriority
             // 
+            this.lstPriority.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(27)))), ((int)(((byte)(39)))));
             this.lstPriority.FormattingEnabled = true;
-            this.lstPriority.Location = new System.Drawing.Point(59, 398);
+            this.lstPriority.Location = new System.Drawing.Point(12, 181);
             this.lstPriority.Name = "lstPriority";
-            this.lstPriority.Size = new System.Drawing.Size(120, 95);
+            this.lstPriority.Size = new System.Drawing.Size(195, 368);
             this.lstPriority.TabIndex = 10;
+            this.lstPriority.SelectedIndexChanged += new System.EventHandler(this.lstPriority_SelectedIndexChanged);
             // 
             // lblAtRiskCount
             // 
             this.lblAtRiskCount.AutoSize = true;
             this.lblAtRiskCount.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblAtRiskCount.Location = new System.Drawing.Point(56, 382);
+            this.lblAtRiskCount.Location = new System.Drawing.Point(16, 189);
             this.lblAtRiskCount.Name = "lblAtRiskCount";
             this.lblAtRiskCount.Size = new System.Drawing.Size(44, 13);
             this.lblAtRiskCount.TabIndex = 11;
             this.lblAtRiskCount.Text = "0 at risk";
+            this.lblAtRiskCount.Click += new System.EventHandler(this.lblAtRiskCount_Click);
             // 
             // btnExportCSV
             // 
@@ -390,7 +394,7 @@
             this.btnExportCSV.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExportCSV.Font = new System.Drawing.Font("Segoe UI", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExportCSV.ForeColor = System.Drawing.Color.White;
-            this.btnExportCSV.Location = new System.Drawing.Point(768, 427);
+            this.btnExportCSV.Location = new System.Drawing.Point(976, 12);
             this.btnExportCSV.Name = "btnExportCSV";
             this.btnExportCSV.Size = new System.Drawing.Size(125, 33);
             this.btnExportCSV.TabIndex = 12;
@@ -406,7 +410,7 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(165)))), ((int)(((byte)(250)))));
-            this.button1.Location = new System.Drawing.Point(429, 508);
+            this.button1.Location = new System.Drawing.Point(876, 555);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(116, 33);
             this.button1.TabIndex = 13;
@@ -419,7 +423,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(17)))), ((int)(((byte)(23)))));
-            this.ClientSize = new System.Drawing.Size(984, 561);
+            this.ClientSize = new System.Drawing.Size(1257, 612);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnExportCSV);
             this.Controls.Add(this.lblAtRiskCount);

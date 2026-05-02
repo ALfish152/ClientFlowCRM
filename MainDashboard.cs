@@ -285,5 +285,20 @@ namespace ClientFlowCRM
             DataManager.SaveData(_clients);
             RefreshAll();
         }
+
+        private void lstPriority_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblAtRiskCount_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
