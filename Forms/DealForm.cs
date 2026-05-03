@@ -47,6 +47,7 @@ namespace ClientFlowCRM
                 Value = numValue.Value,
                 Stage = cmbStage.SelectedItem.ToString()
             };
+            DealData.UpdateCalculatedFields();
 
             DialogResult = DialogResult.OK;
             Close();

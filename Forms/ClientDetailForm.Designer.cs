@@ -31,15 +31,8 @@
             this.lblHeader = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.dgvDeals = new System.Windows.Forms.DataGridView();
-            this.colDealTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDealValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDealStage = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDealProbability = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label3 = new System.Windows.Forms.Label();
             this.dgvInteractions = new System.Windows.Forms.DataGridView();
-            this.colIntType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colIntDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colIntDetails = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnAddDeal = new System.Windows.Forms.Button();
             this.btnAddInteraction = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
@@ -48,6 +41,13 @@
             this.btnDeleteDeal = new System.Windows.Forms.Button();
             this.btnEditInteraction = new System.Windows.Forms.Button();
             this.btnDeleteInteraction = new System.Windows.Forms.Button();
+            this.colDealTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDealValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDealStage = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDealProbability = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colIntType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colIntDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSummary = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeals)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInteractions)).BeginInit();
             this.SuspendLayout();
@@ -75,7 +75,6 @@
             // 
             this.dgvDeals.AllowUserToAddRows = false;
             this.dgvDeals.AllowUserToDeleteRows = false;
-            this.dgvDeals.AllowUserToResizeColumns = false;
             this.dgvDeals.AllowUserToResizeRows = false;
             this.dgvDeals.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colDealTitle,
@@ -91,33 +90,6 @@
             this.dgvDeals.Size = new System.Drawing.Size(934, 200);
             this.dgvDeals.TabIndex = 2;
             // 
-            // colDealTitle
-            // 
-            this.colDealTitle.DataPropertyName = "Title";
-            this.colDealTitle.HeaderText = "Title";
-            this.colDealTitle.Name = "colDealTitle";
-            this.colDealTitle.ReadOnly = true;
-            // 
-            // colDealValue
-            // 
-            this.colDealValue.DataPropertyName = "Value";
-            this.colDealValue.HeaderText = "Value";
-            this.colDealValue.Name = "colDealValue";
-            this.colDealValue.ReadOnly = true;
-            // 
-            // colDealStage
-            // 
-            this.colDealStage.DataPropertyName = "Stage";
-            this.colDealStage.HeaderText = "Stage";
-            this.colDealStage.Name = "colDealStage";
-            this.colDealStage.ReadOnly = true;
-            // 
-            // colDealProbability
-            // 
-            this.colDealProbability.HeaderText = "Probability";
-            this.colDealProbability.Name = "colDealProbability";
-            this.colDealProbability.ReadOnly = true;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -131,13 +103,12 @@
             // 
             this.dgvInteractions.AllowUserToAddRows = false;
             this.dgvInteractions.AllowUserToDeleteRows = false;
-            this.dgvInteractions.AllowUserToResizeColumns = false;
             this.dgvInteractions.AllowUserToResizeRows = false;
             this.dgvInteractions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvInteractions.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colIntType,
             this.colIntDate,
-            this.colIntDetails});
+            this.colSummary});
             this.dgvInteractions.Location = new System.Drawing.Point(12, 319);
             this.dgvInteractions.MultiSelect = false;
             this.dgvInteractions.Name = "dgvInteractions";
@@ -146,26 +117,6 @@
             this.dgvInteractions.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvInteractions.Size = new System.Drawing.Size(934, 188);
             this.dgvInteractions.TabIndex = 4;
-            // 
-            // colIntType
-            // 
-            this.colIntType.DataPropertyName = "Type";
-            this.colIntType.HeaderText = "Type";
-            this.colIntType.Name = "colIntType";
-            this.colIntType.ReadOnly = true;
-            // 
-            // colIntDate
-            // 
-            this.colIntDate.DataPropertyName = "Timestamp";
-            this.colIntDate.HeaderText = "Date";
-            this.colIntDate.Name = "colIntDate";
-            this.colIntDate.ReadOnly = true;
-            // 
-            // colIntDetails
-            // 
-            this.colIntDetails.HeaderText = "Details";
-            this.colIntDetails.Name = "colIntDetails";
-            this.colIntDetails.ReadOnly = true;
             // 
             // btnAddDeal
             // 
@@ -247,6 +198,62 @@
             this.btnDeleteInteraction.UseVisualStyleBackColor = true;
             this.btnDeleteInteraction.Click += new System.EventHandler(this.btnDeleteInteraction_Click);
             // 
+            // colDealTitle
+            // 
+            this.colDealTitle.DataPropertyName = "Title";
+            this.colDealTitle.HeaderText = "Title";
+            this.colDealTitle.MinimumWidth = 100;
+            this.colDealTitle.Name = "colDealTitle";
+            this.colDealTitle.ReadOnly = true;
+            // 
+            // colDealValue
+            // 
+            this.colDealValue.DataPropertyName = "Value";
+            this.colDealValue.HeaderText = "Value";
+            this.colDealValue.MinimumWidth = 100;
+            this.colDealValue.Name = "colDealValue";
+            this.colDealValue.ReadOnly = true;
+            // 
+            // colDealStage
+            // 
+            this.colDealStage.DataPropertyName = "Stage";
+            this.colDealStage.HeaderText = "Stage";
+            this.colDealStage.MinimumWidth = 100;
+            this.colDealStage.Name = "colDealStage";
+            this.colDealStage.ReadOnly = true;
+            // 
+            // colDealProbability
+            // 
+            this.colDealProbability.DataPropertyName = "WinProbability";
+            this.colDealProbability.HeaderText = "Probability";
+            this.colDealProbability.MinimumWidth = 100;
+            this.colDealProbability.Name = "colDealProbability";
+            this.colDealProbability.ReadOnly = true;
+            // 
+            // colIntType
+            // 
+            this.colIntType.DataPropertyName = "Type";
+            this.colIntType.HeaderText = "Type";
+            this.colIntType.MinimumWidth = 100;
+            this.colIntType.Name = "colIntType";
+            this.colIntType.ReadOnly = true;
+            // 
+            // colIntDate
+            // 
+            this.colIntDate.DataPropertyName = "Timestamp";
+            this.colIntDate.HeaderText = "Date";
+            this.colIntDate.MinimumWidth = 100;
+            this.colIntDate.Name = "colIntDate";
+            this.colIntDate.ReadOnly = true;
+            // 
+            // colSummary
+            // 
+            this.colSummary.DataPropertyName = "Summary";
+            this.colSummary.HeaderText = "Details";
+            this.colSummary.MinimumWidth = 100;
+            this.colSummary.Name = "colSummary";
+            this.colSummary.ReadOnly = true;
+            // 
             // ClientDetailForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -285,16 +292,16 @@
         private System.Windows.Forms.Button btnAddInteraction;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnBack;
+        private System.Windows.Forms.Button btnEditDeal;
+        private System.Windows.Forms.Button btnDeleteDeal;
+        private System.Windows.Forms.Button btnEditInteraction;
+        private System.Windows.Forms.Button btnDeleteInteraction;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDealTitle;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDealValue;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDealStage;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDealProbability;
         private System.Windows.Forms.DataGridViewTextBoxColumn colIntType;
         private System.Windows.Forms.DataGridViewTextBoxColumn colIntDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colIntDetails;
-        private System.Windows.Forms.Button btnEditDeal;
-        private System.Windows.Forms.Button btnDeleteDeal;
-        private System.Windows.Forms.Button btnEditInteraction;
-        private System.Windows.Forms.Button btnDeleteInteraction;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colSummary;
     }
 }

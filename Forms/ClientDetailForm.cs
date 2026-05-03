@@ -21,7 +21,22 @@ namespace ClientFlowCRM
             _allClients = allClients;
             _nextDealId = nextDealId;
             _nextInteractionId = nextInteractionId;
+
+            this.Shown += ClientDetailForm_Shown;
             LoadData();
+        }
+
+        private void ClientDetailForm_Shown(object sender, EventArgs e)
+        {
+            ClearAllSelections();
+        }
+
+        private void ClearAllSelections()
+        {
+            dgvDeals.ClearSelection();
+            dgvDeals.CurrentCell = null;
+            dgvInteractions.ClearSelection();
+            dgvInteractions.CurrentCell = null;
         }
 
         private void LoadData()
@@ -31,9 +46,20 @@ namespace ClientFlowCRM
             dgvDeals.DataSource = _client.Deals;
             dgvInteractions.DataSource = null;
             dgvInteractions.DataSource = _client.Interactions;
+            ClearAllSelections();
         }
 
-        // DEAL BUTTONS
+        private void dgvDeals_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            dgvDeals.CurrentCell = null;
+        }
+
+        private void dgvInteractions_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            dgvInteractions.CurrentCell = null;
+        }
+
+        // ==================== DEAL BUTTONS ====================
 
         private void btnAddDeal_Click(object sender, EventArgs e)
         {
@@ -43,6 +69,7 @@ namespace ClientFlowCRM
                 form.DealData.Id = _nextDealId++;
                 form.DealData.ClientId = _client.Id;
                 form.DealData.CreatedDate = DateTime.Now;
+                form.DealData.UpdateCalculatedFields();
                 _client.Deals.Add(form.DealData);
                 _client.UpdateCalculatedFields();
                 LoadData();
@@ -88,9 +115,13 @@ namespace ClientFlowCRM
                 _client.UpdateCalculatedFields();
                 LoadData();
             }
+            else
+            {
+                ClearAllSelections();
+            }
         }
 
-        // INTERACTION BUTTONS 
+        // ==================== INTERACTION BUTTONS ====================
 
         private void btnAddInteraction_Click(object sender, EventArgs e)
         {
@@ -118,7 +149,6 @@ namespace ClientFlowCRM
 
             if (form.ShowDialog() == DialogResult.OK)
             {
-                selected.Timestamp = DateTime.Now;
                 selected.Notes = form.InteractionData.Notes;
 
                 if (selected is Call call && form.InteractionData is Call newCall)
@@ -139,6 +169,10 @@ namespace ClientFlowCRM
                 _client.UpdateCalculatedFields();
                 LoadData();
             }
+            else
+            {
+                ClearAllSelections();
+            }
         }
 
         private void btnDeleteInteraction_Click(object sender, EventArgs e)
@@ -158,9 +192,13 @@ namespace ClientFlowCRM
                 _client.UpdateCalculatedFields();
                 LoadData();
             }
+            else
+            {
+                ClearAllSelections();
+            }
         }
 
-        // NAVIGATION 
+        // ==================== NAVIGATION ====================
 
         private void btnEdit_Click(object sender, EventArgs e)
         {

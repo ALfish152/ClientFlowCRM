@@ -96,6 +96,7 @@ namespace ClientFlowCRM
                 };
             }
 
+            interaction.UpdateSummary();
             InteractionData = interaction;
             DialogResult = DialogResult.OK;
             Close();
