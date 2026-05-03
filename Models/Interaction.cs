@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ClientFlowCRM.Models
 {
@@ -13,7 +9,7 @@ namespace ClientFlowCRM.Models
         public DateTime Timestamp { get; set; }
         public string Notes { get; set; }
         public abstract string Type { get; }
-        public abstract string GetSummary();
+        public abstract string Summary { get; } 
 
         public Interaction()
         {
@@ -27,14 +23,14 @@ namespace ClientFlowCRM.Models
         public int Duration { get; set; }
         public string Outcome { get; set; }
         public override string Type => "Call";
-        public override string GetSummary() => $"Call ({Duration}min) - {Outcome}";
+        public override string Summary => $"Call ({Duration}min) - {Outcome}";
     }
 
     public class Email : Interaction
     {
         public string Subject { get; set; }
         public override string Type => "Email";
-        public override string GetSummary() => $"Email: {Subject}";
+        public override string Summary => $"Email: {Subject}";
     }
 
     public class Meeting : Interaction
@@ -42,6 +38,6 @@ namespace ClientFlowCRM.Models
         public string Location { get; set; }
         public string Attendees { get; set; }
         public override string Type => "Meeting";
-        public override string GetSummary() => $"Meeting at {Location}";
+        public override string Summary => $"Meeting at {Location}";
     }
 }

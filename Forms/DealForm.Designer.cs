@@ -52,7 +52,7 @@
             // 
             this.txtTitle.Location = new System.Drawing.Point(143, 28);
             this.txtTitle.Name = "txtTitle";
-            this.txtTitle.Size = new System.Drawing.Size(100, 20);
+            this.txtTitle.Size = new System.Drawing.Size(330, 20);
             this.txtTitle.TabIndex = 1;
             // 
             // label2
@@ -82,7 +82,7 @@
             0,
             0});
             this.numValue.Name = "numValue";
-            this.numValue.Size = new System.Drawing.Size(120, 20);
+            this.numValue.Size = new System.Drawing.Size(330, 20);
             this.numValue.TabIndex = 4;
             // 
             // cmbStage
@@ -97,12 +97,12 @@
             "Lost"});
             this.cmbStage.Location = new System.Drawing.Point(142, 119);
             this.cmbStage.Name = "cmbStage";
-            this.cmbStage.Size = new System.Drawing.Size(121, 21);
+            this.cmbStage.Size = new System.Drawing.Size(331, 21);
             this.cmbStage.TabIndex = 5;
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(395, 325);
+            this.btnCancel.Location = new System.Drawing.Point(340, 325);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 6;

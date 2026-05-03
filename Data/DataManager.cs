@@ -1,12 +1,12 @@
-﻿using System;
+﻿using ClientFlowCRM.Models;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
-using System.IO;
-using Newtonsoft.Json;
-using ClientFlowCRM.Models;
+using System.Windows.Forms;
 
 namespace ClientFlowCRM.Data
 {
@@ -26,12 +26,27 @@ namespace ClientFlowCRM.Data
                 if (!Directory.Exists(directory))
                     Directory.CreateDirectory(directory);
 
-                string json = JsonConvert.SerializeObject(clients, Formatting.Indented);
+                var settings = new JsonSerializerSettings
+                {
+                    Formatting = Formatting.Indented,
+                    ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+                    TypeNameHandling = TypeNameHandling.Auto
+                };
+
+                string json = JsonConvert.SerializeObject(clients, settings);
                 File.WriteAllText(FilePath, json);
+
+                if (File.Exists(FilePath))
+                {
+                    string savedContent = File.ReadAllText(FilePath);
+                    System.Diagnostics.Debug.WriteLine($"Saved {clients.Count} clients, file size: {savedContent.Length}");
+                }
+
                 return true;
             }
-            catch
+            catch (Exception ex)
             {
+                MessageBox.Show($"Save error: {ex.Message}");
                 return false;
             }
         }
@@ -41,13 +56,27 @@ namespace ClientFlowCRM.Data
             try
             {
                 if (!File.Exists(FilePath))
+                {
+                    System.Diagnostics.Debug.WriteLine("No save file found");
                     return new List<Client>();
+                }
 
                 string json = File.ReadAllText(FilePath);
-                return JsonConvert.DeserializeObject<List<Client>>(json) ?? new List<Client>();
+                System.Diagnostics.Debug.WriteLine($"Loading file, size: {json.Length}");
+
+                var settings = new JsonSerializerSettings
+                {
+                    TypeNameHandling = TypeNameHandling.Auto
+                };
+
+                var clients = JsonConvert.DeserializeObject<List<Client>>(json, settings);
+                System.Diagnostics.Debug.WriteLine($"Loaded {clients?.Count ?? 0} clients");
+
+                return clients ?? new List<Client>();
             }
-            catch
+            catch (Exception ex)
             {
+                MessageBox.Show($"Load error: {ex.Message}");
                 return new List<Client>();
             }
         }

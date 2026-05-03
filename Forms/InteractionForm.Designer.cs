@@ -103,13 +103,13 @@
             // 
             this.txtField2.Location = new System.Drawing.Point(151, 174);
             this.txtField2.Name = "txtField2";
-            this.txtField2.Size = new System.Drawing.Size(100, 20);
+            this.txtField2.Size = new System.Drawing.Size(372, 20);
             this.txtField2.TabIndex = 6;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(55, 219);
+            this.label3.Location = new System.Drawing.Point(55, 242);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(38, 13);
             this.label3.TabIndex = 7;
@@ -117,15 +117,15 @@
             // 
             // txtNotes
             // 
-            this.txtNotes.Location = new System.Drawing.Point(151, 219);
+            this.txtNotes.Location = new System.Drawing.Point(151, 242);
             this.txtNotes.Multiline = true;
             this.txtNotes.Name = "txtNotes";
-            this.txtNotes.Size = new System.Drawing.Size(100, 20);
+            this.txtNotes.Size = new System.Drawing.Size(372, 73);
             this.txtNotes.TabIndex = 8;
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(14, 298);
+            this.btnCancel.Location = new System.Drawing.Point(632, 415);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 9;
@@ -135,7 +135,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(135, 298);
+            this.btnSave.Location = new System.Drawing.Point(713, 415);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 10;

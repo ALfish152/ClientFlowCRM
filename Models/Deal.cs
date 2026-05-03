@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ClientFlowCRM.Models
 {
@@ -14,31 +10,30 @@ namespace ClientFlowCRM.Models
         public decimal Value { get; set; }
         public string Stage { get; set; }
         public DateTime CreatedDate { get; set; }
-
-        public double WinProbability
-        {
-            get
-            {
-                switch (Stage)
-                {
-                    case "Lead": return 0.10;
-                    case "Contacted": return 0.25;
-                    case "Quoted": return 0.50;
-                    case "Negotiation": return 0.75;
-                    case "Won": return 1.00;
-                    case "Lost": return 0.00;
-                    default: return 0.10;
-                }
-            }
-        }
-
-        public bool IsActive => Stage != "Won" && Stage != "Lost";
+        public double WinProbability { get; set; } 
+        public bool IsActive { get; set; } 
 
         public Deal()
         {
             Title = "";
             Stage = "Lead";
             CreatedDate = DateTime.Now;
+            UpdateCalculatedFields();
+        }
+
+        public void UpdateCalculatedFields()
+        {
+            switch (Stage)
+            {
+                case "Lead": WinProbability = 0.10; break;
+                case "Contacted": WinProbability = 0.25; break;
+                case "Quoted": WinProbability = 0.50; break;
+                case "Negotiation": WinProbability = 0.75; break;
+                case "Won": WinProbability = 1.00; break;
+                case "Lost": WinProbability = 0.00; break;
+                default: WinProbability = 0.10; break;
+            }
+            IsActive = Stage != "Won" && Stage != "Lost";
         }
     }
 }

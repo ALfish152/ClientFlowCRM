@@ -1,13 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-
 using ClientFlowCRM.Models;
 
 namespace ClientFlowCRM
@@ -20,6 +12,25 @@ namespace ClientFlowCRM
         {
             InitializeComponent();
             cmbStage.SelectedIndex = 0;
+            this.Text = "Add New Deal";
+        }
+
+        public DealForm(Deal existingDeal)
+        {
+            InitializeComponent();
+            this.Text = "Edit Deal";
+
+            txtTitle.Text = existingDeal.Title;
+            numValue.Value = existingDeal.Value;
+
+            for (int i = 0; i < cmbStage.Items.Count; i++)
+            {
+                if (cmbStage.Items[i].ToString() == existingDeal.Stage)
+                {
+                    cmbStage.SelectedIndex = i;
+                    break;
+                }
+            }
         }
 
         private void btnSave_Click(object sender, EventArgs e)

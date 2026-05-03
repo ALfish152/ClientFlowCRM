@@ -1,13 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-
 using ClientFlowCRM.Models;
 
 namespace ClientFlowCRM
@@ -19,6 +11,34 @@ namespace ClientFlowCRM
         public InteractionForm()
         {
             InitializeComponent();
+            this.Text = "Add New Interaction";
+        }
+
+        public InteractionForm(Interaction existingInteraction)
+        {
+            InitializeComponent();
+            this.Text = "Edit Interaction";
+            txtNotes.Text = existingInteraction.Notes;
+
+            if (existingInteraction is Call call)
+            {
+                rbCall.Checked = true;
+                txtField1.Text = call.Duration.ToString();
+                txtField2.Text = call.Outcome;
+            }
+            else if (existingInteraction is Email email)
+            {
+                rbEmail.Checked = true;
+                txtField1.Text = email.Subject;
+            }
+            else if (existingInteraction is Meeting meeting)
+            {
+                rbMeeting.Checked = true;
+                txtField1.Text = meeting.Location;
+                txtField2.Text = meeting.Attendees;
+            }
+
+            UpdateFields();
         }
 
         private void UpdateFields()

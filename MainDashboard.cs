@@ -6,6 +6,7 @@ using System.Linq;
 using System.Windows.Forms;
 using ClientFlowCRM.Algorithms;
 using System.Drawing;
+using System.IO;
 
 namespace ClientFlowCRM
 {
@@ -19,18 +20,30 @@ namespace ClientFlowCRM
         public MainDashboard()
         {
             InitializeComponent();
+
             _clients = DataManager.LoadData();
+            if (_clients == null)
+                _clients = new List<Client>();
+
+            foreach (var client in _clients)
+            {
+                client.UpdateCalculatedFields();
+            }
+
             _nextId = _clients.Any() ? _clients.Max(c => c.Id) + 1 : 1;
             RefreshAll();
         }
 
         private void ClearSelection()
         {
-            if (dgvClients.Rows.Count > 0)
+            try
             {
-                dgvClients.ClearSelection();
-                dgvClients.CurrentCell = null;
+                if (dgvClients.Rows.Count > 0 && dgvClients.SelectedRows.Count > 0)
+                {
+                    dgvClients.ClearSelection();
+                }
             }
+            catch { }
         }
 
         private LeadScoringModel _scorer = new LeadScoringModel();
@@ -50,6 +63,7 @@ namespace ClientFlowCRM
         {
             foreach (var client in _clients)
             {
+                client.UpdateCalculatedFields();
                 client.Score = _scorer.CalculateScore(client);
                 client.Temperature = _scorer.GetTemperature(client.Score);
             }
@@ -82,47 +96,90 @@ namespace ClientFlowCRM
 
         private void RefreshGrid()
         {
-            dgvClients.DataSource = null;
-            dgvClients.DataSource = _clients;
-
-            dgvClients.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
-            if (dgvClients.Columns.Count >= 6)
+            try
             {
-                dgvClients.Columns[0].Width = 40;
-                dgvClients.Columns[1].Width = 160;
-                dgvClients.Columns[2].Width = 190;
-                dgvClients.Columns[3].Width = 120;
-                dgvClients.Columns[4].Width = 160;
-                dgvClients.Columns[5].Width = 110;
-            }
+                dgvClients.CellClick -= dgvClients_CellClick;
 
-            foreach (DataGridViewRow row in dgvClients.Rows)
-            {
-                if (row.DataBoundItem is Client client)
+                dgvClients.DataSource = null;
+
+                if (_clients != null && _clients.Count > 0)
                 {
-                    if (client.Temperature == "Hot")
-                        row.DefaultCellStyle.BackColor = Color.LightPink;
-                    else if (client.Temperature == "Warm")
-                        row.DefaultCellStyle.BackColor = Color.LightGoldenrodYellow;
-                    else
-                        row.DefaultCellStyle.BackColor = Color.LightBlue;
+                    dgvClients.DataSource = _clients;
+
+                    // Hide columns we don't want to show
+                    if (dgvClients.Columns["Deals"] != null)
+                        dgvClients.Columns["Deals"].Visible = false;
+                    if (dgvClients.Columns["Interactions"] != null)
+                        dgvClients.Columns["Interactions"].Visible = false;
+                    if (dgvClients.Columns["LastContactDate"] != null)
+                        dgvClients.Columns["LastContactDate"].Visible = false;
+                    if (dgvClients.Columns["InteractionCount"] != null)
+                        dgvClients.Columns["InteractionCount"].Visible = false;
+                    if (dgvClients.Columns["IsAtRisk"] != null)
+                        dgvClients.Columns["IsAtRisk"].Visible = false;
+                    if (dgvClients.Columns["CreatedDate"] != null)
+                        dgvClients.Columns["CreatedDate"].Visible = false;
+
+                    // Reorder visible columns
+                    string[] columnOrder = { "Id", "Name", "Email", "Phone", "Company", "Source", "Score", "Temperature", "TotalDealValue" };
+                    foreach (string colName in columnOrder)
+                    {
+                        if (dgvClients.Columns[colName] != null)
+                        {
+                            dgvClients.Columns[colName].DisplayIndex = Array.IndexOf(columnOrder, colName);
+                        }
+                    }
+
+                    // Set column widths
+                    dgvClients.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
+                    if (dgvClients.Columns["Id"] != null) dgvClients.Columns["Id"].Width = 40;
+                    if (dgvClients.Columns["Name"] != null) dgvClients.Columns["Name"].Width = 150;
+                    if (dgvClients.Columns["Email"] != null) dgvClients.Columns["Email"].Width = 180;
+                    if (dgvClients.Columns["Phone"] != null) dgvClients.Columns["Phone"].Width = 110;
+                    if (dgvClients.Columns["Company"] != null) dgvClients.Columns["Company"].Width = 150;
+                    if (dgvClients.Columns["Source"] != null) dgvClients.Columns["Source"].Width = 100;
+                    if (dgvClients.Columns["Score"] != null) dgvClients.Columns["Score"].Width = 80;
+                    if (dgvClients.Columns["Temperature"] != null) dgvClients.Columns["Temperature"].Width = 100;
+                    if (dgvClients.Columns["TotalDealValue"] != null) dgvClients.Columns["TotalDealValue"].Width = 120;
+
+                    foreach (DataGridViewRow row in dgvClients.Rows)
+                    {
+                        if (row.DataBoundItem is Client client)
+                        {
+                            if (client.Temperature == "Hot")
+                                row.DefaultCellStyle.BackColor = Color.LightPink;
+                            else if (client.Temperature == "Warm")
+                                row.DefaultCellStyle.BackColor = Color.LightGoldenrodYellow;
+                            else
+                                row.DefaultCellStyle.BackColor = Color.LightBlue;
+                        }
+                    }
                 }
+
+                dgvClients.CellClick += dgvClients_CellClick;
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"RefreshGrid error: {ex.Message}");
+            }
+        }
+
+        private void dgvClients_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //  does nothing, just prevents errors
         }
 
         private void btnAddClient_Click(object sender, EventArgs e)
         {
             ClientForm form = new ClientForm();
-
             if (form.ShowDialog() == DialogResult.OK)
             {
                 form.ClientData.Id = _nextId++;
+                form.ClientData.UpdateCalculatedFields();
                 _clients.Add(form.ClientData);
                 DataManager.SaveData(_clients);
                 RefreshAll();
-
-                MessageBox.Show($"Client '{form.ClientData.Name}' added!",
-                    "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"Client '{form.ClientData.Name}' added!", "Success");
             }
         }
 
@@ -176,7 +233,7 @@ namespace ClientFlowCRM
 
         private void MainDashboard_Load(object sender, EventArgs e)
         {
-
+            RefreshAll();
         }
 
         private void lblTotalClients_Click(object sender, EventArgs e)
@@ -230,25 +287,6 @@ namespace ClientFlowCRM
         }
 
 
-
-        private void dgvClients_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0 && dgvClients.Rows[e.RowIndex].DataBoundItem is Client client)
-            {
-                var form = new ClientDetailForm(client, _clients, _nextDealId, _nextInteractionId);
-                form.ShowDialog();
-
-                // Update IDs in case new deals/interactions were added
-                if (_clients.SelectMany(c => c.Deals).Any())
-                    _nextDealId = _clients.SelectMany(c => c.Deals).Max(d => d.Id) + 1;
-                if (_clients.SelectMany(c => c.Interactions).Any())
-                    _nextInteractionId = _clients.SelectMany(c => c.Interactions).Max(i => i.Id) + 1;
-
-                DataManager.SaveData(_clients);
-                RefreshAll();
-            }
-        }
-
         private void btnExportCSV_Click(object sender, EventArgs e)
         {
             SaveFileDialog dialog = new SaveFileDialog
@@ -276,7 +314,6 @@ namespace ClientFlowCRM
             var form = new ClientDetailForm(client, _clients, _nextDealId, _nextInteractionId);
             form.ShowDialog();
 
-            // Update IDs after returning
             if (_clients.SelectMany(c => c.Deals).Any())
                 _nextDealId = _clients.SelectMany(c => c.Deals).Max(d => d.Id) + 1;
             if (_clients.SelectMany(c => c.Interactions).Any())
@@ -299,6 +336,27 @@ namespace ClientFlowCRM
         private void lblAtRiskCount_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            RefreshAll();
+        }
+
+        private void btnTestSave_Click(object sender, EventArgs e)
+        {
+            DataManager.SaveData(_clients);
+            string path = System.IO.Path.Combine(
+                Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+                "ClientFlowCRM",
+                "clients.json");
+
+            bool exists = File.Exists(path);
+            string fileContent = exists ? File.ReadAllText(path) : "FILE NOT FOUND";
+
+            MessageBox.Show(
+                $"Path: {path}\nExists: {exists}\nClients in memory: {_clients.Count}\n\nFirst 500 chars:\n{fileContent.Substring(0, Math.Min(500, fileContent.Length))}",
+                "Save Debug");
         }
     }
 }

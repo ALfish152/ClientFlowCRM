@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lblTotalClientsSub = new System.Windows.Forms.Label();
             this.lblTotalClients = new System.Windows.Forms.Label();
@@ -55,6 +55,8 @@
             this.lblAtRiskCount = new System.Windows.Forms.Label();
             this.btnExportCSV = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.btnRefresh = new System.Windows.Forms.Button();
+            this.btnTestSave = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -224,19 +226,19 @@
             // dgvClients
             // 
             this.dgvClients.AllowUserToAddRows = false;
-            this.dgvClients.AllowUserToResizeColumns = false;
+            this.dgvClients.AllowUserToDeleteRows = false;
             this.dgvClients.AllowUserToResizeRows = false;
             this.dgvClients.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(27)))), ((int)(((byte)(39)))));
             this.dgvClients.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(17)))), ((int)(((byte)(23)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(85)))), ((int)(((byte)(99)))));
-            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(17)))), ((int)(((byte)(23)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvClients.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(17)))), ((int)(((byte)(23)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(85)))), ((int)(((byte)(99)))));
+            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(17)))), ((int)(((byte)(23)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvClients.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvClients.ColumnHeadersHeight = 38;
             this.dgvClients.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvClients.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -249,14 +251,14 @@
             this.dgvClients.EnableHeadersVisualStyles = false;
             this.dgvClients.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(37)))), ((int)(((byte)(54)))));
             this.dgvClients.Location = new System.Drawing.Point(219, 189);
+            this.dgvClients.MultiSelect = false;
             this.dgvClients.Name = "dgvClients";
             this.dgvClients.ReadOnly = true;
             this.dgvClients.RowHeadersVisible = false;
             this.dgvClients.RowHeadersWidth = 51;
             this.dgvClients.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvClients.Size = new System.Drawing.Size(1026, 360);
+            this.dgvClients.Size = new System.Drawing.Size(1449, 428);
             this.dgvClients.TabIndex = 6;
-            this.dgvClients.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvClients_CellContentDoubleClick);
             // 
             // colId
             // 
@@ -321,12 +323,12 @@
             // btnAddClient
             // 
             this.btnAddClient.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(99)))), ((int)(((byte)(235)))));
-            this.btnAddClient.Cursor = System.Windows.Forms.Cursors.Cross;
+            this.btnAddClient.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnAddClient.FlatAppearance.BorderSize = 0;
             this.btnAddClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddClient.Font = new System.Drawing.Font("Segoe UI", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddClient.ForeColor = System.Drawing.Color.White;
-            this.btnAddClient.Location = new System.Drawing.Point(1120, 12);
+            this.btnAddClient.Location = new System.Drawing.Point(1412, 141);
             this.btnAddClient.Name = "btnAddClient";
             this.btnAddClient.Size = new System.Drawing.Size(125, 33);
             this.btnAddClient.TabIndex = 7;
@@ -342,7 +344,7 @@
             this.btnEditClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEditClient.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEditClient.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(165)))), ((int)(((byte)(250)))));
-            this.btnEditClient.Location = new System.Drawing.Point(998, 555);
+            this.btnEditClient.Location = new System.Drawing.Point(1425, 623);
             this.btnEditClient.Name = "btnEditClient";
             this.btnEditClient.Size = new System.Drawing.Size(116, 33);
             this.btnEditClient.TabIndex = 8;
@@ -357,7 +359,7 @@
             this.btnDeleteClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDeleteClient.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDeleteClient.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(165)))), ((int)(((byte)(165)))));
-            this.btnDeleteClient.Location = new System.Drawing.Point(1120, 555);
+            this.btnDeleteClient.Location = new System.Drawing.Point(1547, 623);
             this.btnDeleteClient.Name = "btnDeleteClient";
             this.btnDeleteClient.Size = new System.Drawing.Size(126, 33);
             this.btnDeleteClient.TabIndex = 9;
@@ -368,20 +370,24 @@
             // lstPriority
             // 
             this.lstPriority.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(27)))), ((int)(((byte)(39)))));
+            this.lstPriority.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lstPriority.ForeColor = System.Drawing.SystemColors.Window;
             this.lstPriority.FormattingEnabled = true;
+            this.lstPriority.ItemHeight = 16;
             this.lstPriority.Location = new System.Drawing.Point(12, 181);
             this.lstPriority.Name = "lstPriority";
-            this.lstPriority.Size = new System.Drawing.Size(195, 368);
+            this.lstPriority.Size = new System.Drawing.Size(195, 420);
             this.lstPriority.TabIndex = 10;
             this.lstPriority.SelectedIndexChanged += new System.EventHandler(this.lstPriority_SelectedIndexChanged);
             // 
             // lblAtRiskCount
             // 
             this.lblAtRiskCount.AutoSize = true;
+            this.lblAtRiskCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAtRiskCount.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblAtRiskCount.Location = new System.Drawing.Point(16, 189);
+            this.lblAtRiskCount.Location = new System.Drawing.Point(1299, 102);
             this.lblAtRiskCount.Name = "lblAtRiskCount";
-            this.lblAtRiskCount.Size = new System.Drawing.Size(44, 13);
+            this.lblAtRiskCount.Size = new System.Drawing.Size(64, 20);
             this.lblAtRiskCount.TabIndex = 11;
             this.lblAtRiskCount.Text = "0 at risk";
             this.lblAtRiskCount.Click += new System.EventHandler(this.lblAtRiskCount_Click);
@@ -389,12 +395,12 @@
             // btnExportCSV
             // 
             this.btnExportCSV.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(99)))), ((int)(((byte)(235)))));
-            this.btnExportCSV.Cursor = System.Windows.Forms.Cursors.Cross;
+            this.btnExportCSV.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnExportCSV.FlatAppearance.BorderSize = 0;
             this.btnExportCSV.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExportCSV.Font = new System.Drawing.Font("Segoe UI", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExportCSV.ForeColor = System.Drawing.Color.White;
-            this.btnExportCSV.Location = new System.Drawing.Point(976, 12);
+            this.btnExportCSV.Location = new System.Drawing.Point(1543, 12);
             this.btnExportCSV.Name = "btnExportCSV";
             this.btnExportCSV.Size = new System.Drawing.Size(125, 33);
             this.btnExportCSV.TabIndex = 12;
@@ -410,7 +416,7 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(165)))), ((int)(((byte)(250)))));
-            this.button1.Location = new System.Drawing.Point(876, 555);
+            this.button1.Location = new System.Drawing.Point(1303, 623);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(116, 33);
             this.button1.TabIndex = 13;
@@ -418,12 +424,46 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.btnViewDetails_Click);
             // 
+            // btnRefresh
+            // 
+            this.btnRefresh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(99)))), ((int)(((byte)(235)))));
+            this.btnRefresh.Cursor = System.Windows.Forms.Cursors.Default;
+            this.btnRefresh.FlatAppearance.BorderSize = 0;
+            this.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRefresh.Font = new System.Drawing.Font("Segoe UI", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRefresh.ForeColor = System.Drawing.Color.White;
+            this.btnRefresh.Location = new System.Drawing.Point(1543, 141);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(125, 33);
+            this.btnRefresh.TabIndex = 14;
+            this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.UseCompatibleTextRendering = true;
+            this.btnRefresh.UseVisualStyleBackColor = false;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
+            // btnTestSave
+            // 
+            this.btnTestSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            this.btnTestSave.FlatAppearance.BorderSize = 0;
+            this.btnTestSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTestSave.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTestSave.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(165)))), ((int)(((byte)(165)))));
+            this.btnTestSave.Location = new System.Drawing.Point(1131, 623);
+            this.btnTestSave.Name = "btnTestSave";
+            this.btnTestSave.Size = new System.Drawing.Size(126, 33);
+            this.btnTestSave.TabIndex = 15;
+            this.btnTestSave.Text = "Test Save";
+            this.btnTestSave.UseVisualStyleBackColor = false;
+            this.btnTestSave.Click += new System.EventHandler(this.btnTestSave_Click);
+            // 
             // MainDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(17)))), ((int)(((byte)(23)))));
-            this.ClientSize = new System.Drawing.Size(1257, 612);
+            this.ClientSize = new System.Drawing.Size(1698, 668);
+            this.Controls.Add(this.btnTestSave);
+            this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnExportCSV);
             this.Controls.Add(this.lblAtRiskCount);
@@ -481,6 +521,8 @@
         private System.Windows.Forms.Label lblAtRiskCount;
         private System.Windows.Forms.Button btnExportCSV;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnRefresh;
+        private System.Windows.Forms.Button btnTestSave;
     }
 }
 

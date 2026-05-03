@@ -44,6 +44,10 @@
             this.btnAddInteraction = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
+            this.btnEditDeal = new System.Windows.Forms.Button();
+            this.btnDeleteDeal = new System.Windows.Forms.Button();
+            this.btnEditInteraction = new System.Windows.Forms.Button();
+            this.btnDeleteInteraction = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeals)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInteractions)).BeginInit();
             this.SuspendLayout();
@@ -51,16 +55,17 @@
             // lblHeader
             // 
             this.lblHeader.AutoSize = true;
-            this.lblHeader.Location = new System.Drawing.Point(100, 49);
+            this.lblHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHeader.Location = new System.Drawing.Point(8, 9);
             this.lblHeader.Name = "lblHeader";
-            this.lblHeader.Size = new System.Drawing.Size(82, 13);
+            this.lblHeader.Size = new System.Drawing.Size(245, 37);
             this.lblHeader.TabIndex = 0;
             this.lblHeader.Text = "malaking font to";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(100, 83);
+            this.label2.Location = new System.Drawing.Point(12, 63);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(45, 13);
             this.label2.TabIndex = 1;
@@ -77,12 +82,13 @@
             this.colDealValue,
             this.colDealStage,
             this.colDealProbability});
-            this.dgvDeals.Location = new System.Drawing.Point(12, 99);
+            this.dgvDeals.Location = new System.Drawing.Point(12, 79);
+            this.dgvDeals.MultiSelect = false;
             this.dgvDeals.Name = "dgvDeals";
             this.dgvDeals.ReadOnly = true;
             this.dgvDeals.RowHeadersVisible = false;
             this.dgvDeals.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDeals.Size = new System.Drawing.Size(444, 150);
+            this.dgvDeals.Size = new System.Drawing.Size(934, 200);
             this.dgvDeals.TabIndex = 2;
             // 
             // colDealTitle
@@ -115,7 +121,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 272);
+            this.label3.Location = new System.Drawing.Point(12, 295);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(90, 13);
             this.label3.TabIndex = 3;
@@ -132,11 +138,13 @@
             this.colIntType,
             this.colIntDate,
             this.colIntDetails});
-            this.dgvInteractions.Location = new System.Drawing.Point(12, 288);
+            this.dgvInteractions.Location = new System.Drawing.Point(12, 319);
+            this.dgvInteractions.MultiSelect = false;
             this.dgvInteractions.Name = "dgvInteractions";
             this.dgvInteractions.ReadOnly = true;
+            this.dgvInteractions.RowHeadersVisible = false;
             this.dgvInteractions.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvInteractions.Size = new System.Drawing.Size(444, 150);
+            this.dgvInteractions.Size = new System.Drawing.Size(934, 188);
             this.dgvInteractions.TabIndex = 4;
             // 
             // colIntType
@@ -161,7 +169,7 @@
             // 
             // btnAddDeal
             // 
-            this.btnAddDeal.Location = new System.Drawing.Point(573, 296);
+            this.btnAddDeal.Location = new System.Drawing.Point(709, 285);
             this.btnAddDeal.Name = "btnAddDeal";
             this.btnAddDeal.Size = new System.Drawing.Size(75, 23);
             this.btnAddDeal.TabIndex = 5;
@@ -171,7 +179,7 @@
             // 
             // btnAddInteraction
             // 
-            this.btnAddInteraction.Location = new System.Drawing.Point(680, 296);
+            this.btnAddInteraction.Location = new System.Drawing.Point(585, 513);
             this.btnAddInteraction.Name = "btnAddInteraction";
             this.btnAddInteraction.Size = new System.Drawing.Size(118, 23);
             this.btnAddInteraction.TabIndex = 6;
@@ -181,7 +189,7 @@
             // 
             // btnEdit
             // 
-            this.btnEdit.Location = new System.Drawing.Point(582, 334);
+            this.btnEdit.Location = new System.Drawing.Point(887, 541);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(75, 23);
             this.btnEdit.TabIndex = 7;
@@ -191,7 +199,7 @@
             // 
             // btnBack
             // 
-            this.btnBack.Location = new System.Drawing.Point(691, 344);
+            this.btnBack.Location = new System.Drawing.Point(968, 541);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(75, 23);
             this.btnBack.TabIndex = 8;
@@ -199,11 +207,55 @@
             this.btnBack.UseVisualStyleBackColor = true;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
+            // btnEditDeal
+            // 
+            this.btnEditDeal.Location = new System.Drawing.Point(790, 285);
+            this.btnEditDeal.Name = "btnEditDeal";
+            this.btnEditDeal.Size = new System.Drawing.Size(75, 23);
+            this.btnEditDeal.TabIndex = 9;
+            this.btnEditDeal.Text = "Edit Deal";
+            this.btnEditDeal.UseVisualStyleBackColor = true;
+            this.btnEditDeal.Click += new System.EventHandler(this.btnEditDeal_Click);
+            // 
+            // btnDeleteDeal
+            // 
+            this.btnDeleteDeal.Location = new System.Drawing.Point(871, 285);
+            this.btnDeleteDeal.Name = "btnDeleteDeal";
+            this.btnDeleteDeal.Size = new System.Drawing.Size(75, 23);
+            this.btnDeleteDeal.TabIndex = 10;
+            this.btnDeleteDeal.Text = "Delete Deal";
+            this.btnDeleteDeal.UseVisualStyleBackColor = true;
+            this.btnDeleteDeal.Click += new System.EventHandler(this.btnDeleteDeal_Click);
+            // 
+            // btnEditInteraction
+            // 
+            this.btnEditInteraction.Location = new System.Drawing.Point(709, 513);
+            this.btnEditInteraction.Name = "btnEditInteraction";
+            this.btnEditInteraction.Size = new System.Drawing.Size(118, 23);
+            this.btnEditInteraction.TabIndex = 11;
+            this.btnEditInteraction.Text = "Edit Interaction";
+            this.btnEditInteraction.UseVisualStyleBackColor = true;
+            this.btnEditInteraction.Click += new System.EventHandler(this.btnEditInteraction_Click);
+            // 
+            // btnDeleteInteraction
+            // 
+            this.btnDeleteInteraction.Location = new System.Drawing.Point(833, 513);
+            this.btnDeleteInteraction.Name = "btnDeleteInteraction";
+            this.btnDeleteInteraction.Size = new System.Drawing.Size(118, 23);
+            this.btnDeleteInteraction.TabIndex = 12;
+            this.btnDeleteInteraction.Text = "Delete Interaction";
+            this.btnDeleteInteraction.UseVisualStyleBackColor = true;
+            this.btnDeleteInteraction.Click += new System.EventHandler(this.btnDeleteInteraction_Click);
+            // 
             // ClientDetailForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1055, 576);
+            this.Controls.Add(this.btnDeleteInteraction);
+            this.Controls.Add(this.btnEditInteraction);
+            this.Controls.Add(this.btnDeleteDeal);
+            this.Controls.Add(this.btnEditDeal);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.btnAddInteraction);
@@ -240,5 +292,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colIntType;
         private System.Windows.Forms.DataGridViewTextBoxColumn colIntDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn colIntDetails;
+        private System.Windows.Forms.Button btnEditDeal;
+        private System.Windows.Forms.Button btnDeleteDeal;
+        private System.Windows.Forms.Button btnEditInteraction;
+        private System.Windows.Forms.Button btnDeleteInteraction;
     }
 }

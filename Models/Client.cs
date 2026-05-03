@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ClientFlowCRM.Models
 {
@@ -13,11 +10,6 @@ namespace ClientFlowCRM.Models
         private string _phone;
         private string _company;
         private string _source;
-
-        public List<Deal> Deals { get; set; } = new List<Deal>();
-        public List<Interaction> Interactions { get; set; } = new List<Interaction>();
-        public double Score { get; set; }
-        public string Temperature { get; set; } = "Cold";
 
         public int Id { get; set; }
 
@@ -51,6 +43,16 @@ namespace ClientFlowCRM.Models
             set => _source = value ?? "Website";
         }
 
+        public List<Deal> Deals { get; set; } = new List<Deal>();
+        public List<Interaction> Interactions { get; set; } = new List<Interaction>();
+        public double Score { get; set; }
+        public string Temperature { get; set; } = "Cold";
+
+        public decimal TotalDealValue { get; set; }
+        public int InteractionCount { get; set; }
+        public DateTime? LastContactDate { get; set; }
+        public bool IsAtRisk { get; set; }
+
         public Client()
         {
             _name = "";
@@ -58,43 +60,40 @@ namespace ClientFlowCRM.Models
             _phone = "";
             _company = "";
             _source = "Website";
+            TotalDealValue = 0;
+            InteractionCount = 0;
+            LastContactDate = null;
+            IsAtRisk = true;
         }
 
-        public decimal TotalDealValue
+        public void UpdateCalculatedFields()
         {
-            get
+            decimal total = 0;
+            foreach (var deal in Deals)
             {
-                decimal total = 0;
-                foreach (var deal in Deals)
-                {
-                    if (deal.Stage != "Lost")
-                        total += deal.Value;
-                }
-                return total;
+                if (deal.Stage != "Lost")
+                    total += deal.Value;
             }
-        }
+            TotalDealValue = total;
 
-        public int InteractionCount => Interactions.Count;
+            InteractionCount = Interactions.Count;
 
-        public DateTime? LastContactDate
-        {
-            get
+            if (Interactions.Count == 0)
             {
-                if (Interactions.Count == 0) return null;
+                LastContactDate = null;
+            }
+            else
+            {
                 DateTime latest = Interactions[0].Timestamp;
                 foreach (var i in Interactions)
                     if (i.Timestamp > latest) latest = i.Timestamp;
-                return latest;
+                LastContactDate = latest;
             }
-        }
 
-        public bool IsAtRisk
-        {
-            get
-            {
-                if (!LastContactDate.HasValue) return true;
-                return (DateTime.Now - LastContactDate.Value).TotalDays > 14;
-            }
+            if (!LastContactDate.HasValue)
+                IsAtRisk = true;
+            else
+                IsAtRisk = (DateTime.Now - LastContactDate.Value).TotalDays > 14;
         }
     }
 }
