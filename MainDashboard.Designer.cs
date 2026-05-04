@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lblTotalClientsSub = new System.Windows.Forms.Label();
             this.lblTotalClients = new System.Windows.Forms.Label();
@@ -72,9 +72,9 @@
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(85)))), ((int)(((byte)(99)))));
             this.groupBox1.Location = new System.Drawing.Point(16, 91);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(349, 110);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
@@ -117,9 +117,9 @@
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(85)))), ((int)(((byte)(99)))));
             this.groupBox2.Location = new System.Drawing.Point(420, 91);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox2.Size = new System.Drawing.Size(375, 110);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
@@ -161,9 +161,9 @@
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(85)))), ((int)(((byte)(99)))));
             this.groupBox3.Location = new System.Drawing.Point(1272, 91);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox3.Size = new System.Drawing.Size(388, 110);
             this.groupBox3.TabIndex = 4;
             this.groupBox3.TabStop = false;
@@ -203,9 +203,9 @@
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(85)))), ((int)(((byte)(99)))));
             this.groupBox4.Location = new System.Drawing.Point(856, 91);
-            this.groupBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox4.Size = new System.Drawing.Size(349, 110);
             this.groupBox4.TabIndex = 5;
             this.groupBox4.TabStop = false;
@@ -246,15 +246,15 @@
             this.dgvClients.AllowUserToResizeRows = false;
             this.dgvClients.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(27)))), ((int)(((byte)(39)))));
             this.dgvClients.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(17)))), ((int)(((byte)(23)))));
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(85)))), ((int)(((byte)(99)))));
-            dataGridViewCellStyle8.Padding = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(17)))), ((int)(((byte)(23)))));
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvClients.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(17)))), ((int)(((byte)(23)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(85)))), ((int)(((byte)(99)))));
+            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(17)))), ((int)(((byte)(23)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvClients.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvClients.ColumnHeadersHeight = 38;
             this.dgvClients.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvClients.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -267,7 +267,7 @@
             this.dgvClients.EnableHeadersVisualStyles = false;
             this.dgvClients.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(37)))), ((int)(((byte)(54)))));
             this.dgvClients.Location = new System.Drawing.Point(292, 233);
-            this.dgvClients.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvClients.Margin = new System.Windows.Forms.Padding(4);
             this.dgvClients.MultiSelect = false;
             this.dgvClients.Name = "dgvClients";
             this.dgvClients.ReadOnly = true;
@@ -345,8 +345,8 @@
             this.btnAddClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddClient.Font = new System.Drawing.Font("Segoe UI", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddClient.ForeColor = System.Drawing.Color.White;
-            this.btnAddClient.Location = new System.Drawing.Point(1725, 13);
-            this.btnAddClient.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAddClient.Location = new System.Drawing.Point(1578, 4);
+            this.btnAddClient.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddClient.Name = "btnAddClient";
             this.btnAddClient.Size = new System.Drawing.Size(167, 41);
             this.btnAddClient.TabIndex = 7;
@@ -363,7 +363,7 @@
             this.btnEditClient.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEditClient.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(165)))), ((int)(((byte)(250)))));
             this.btnEditClient.Location = new System.Drawing.Point(1741, 767);
-            this.btnEditClient.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnEditClient.Margin = new System.Windows.Forms.Padding(4);
             this.btnEditClient.Name = "btnEditClient";
             this.btnEditClient.Size = new System.Drawing.Size(155, 41);
             this.btnEditClient.TabIndex = 8;
@@ -378,8 +378,8 @@
             this.btnDeleteClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDeleteClient.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDeleteClient.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(165)))), ((int)(((byte)(165)))));
-            this.btnDeleteClient.Location = new System.Drawing.Point(2063, 767);
-            this.btnDeleteClient.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDeleteClient.Location = new System.Drawing.Point(1402, 768);
+            this.btnDeleteClient.Margin = new System.Windows.Forms.Padding(4);
             this.btnDeleteClient.Name = "btnDeleteClient";
             this.btnDeleteClient.Size = new System.Drawing.Size(168, 41);
             this.btnDeleteClient.TabIndex = 9;
@@ -395,7 +395,7 @@
             this.lstPriority.FormattingEnabled = true;
             this.lstPriority.ItemHeight = 20;
             this.lstPriority.Location = new System.Drawing.Point(16, 233);
-            this.lstPriority.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lstPriority.Margin = new System.Windows.Forms.Padding(4);
             this.lstPriority.Name = "lstPriority";
             this.lstPriority.Size = new System.Drawing.Size(259, 524);
             this.lstPriority.TabIndex = 10;
@@ -422,8 +422,8 @@
             this.btnExportCSV.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExportCSV.Font = new System.Drawing.Font("Segoe UI", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExportCSV.ForeColor = System.Drawing.Color.White;
-            this.btnExportCSV.Location = new System.Drawing.Point(2057, 15);
-            this.btnExportCSV.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnExportCSV.Location = new System.Drawing.Point(1402, 4);
+            this.btnExportCSV.Margin = new System.Windows.Forms.Padding(4);
             this.btnExportCSV.Name = "btnExportCSV";
             this.btnExportCSV.Size = new System.Drawing.Size(167, 41);
             this.btnExportCSV.TabIndex = 12;
@@ -440,7 +440,7 @@
             this.button1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(165)))), ((int)(((byte)(250)))));
             this.button1.Location = new System.Drawing.Point(1578, 767);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(155, 41);
             this.button1.TabIndex = 13;
@@ -456,8 +456,8 @@
             this.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRefresh.Font = new System.Drawing.Font("Segoe UI", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRefresh.ForeColor = System.Drawing.Color.White;
-            this.btnRefresh.Location = new System.Drawing.Point(2057, 174);
-            this.btnRefresh.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnRefresh.Location = new System.Drawing.Point(1756, 4);
+            this.btnRefresh.Margin = new System.Windows.Forms.Padding(4);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(167, 41);
             this.btnRefresh.TabIndex = 14;
@@ -473,8 +473,8 @@
             this.btnTestSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTestSave.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTestSave.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(165)))), ((int)(((byte)(165)))));
-            this.btnTestSave.Location = new System.Drawing.Point(1402, 767);
-            this.btnTestSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnTestSave.Location = new System.Drawing.Point(1226, 768);
+            this.btnTestSave.Margin = new System.Windows.Forms.Padding(4);
             this.btnTestSave.Name = "btnTestSave";
             this.btnTestSave.Size = new System.Drawing.Size(168, 41);
             this.btnTestSave.TabIndex = 15;
@@ -502,7 +502,7 @@
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainDashboard";
             this.Text = "ClientFlow CRM";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
