@@ -45,7 +45,7 @@
             // 
             this.rbCall.AutoSize = true;
             this.rbCall.Checked = true;
-            this.rbCall.Location = new System.Drawing.Point(55, 40);
+            this.rbCall.Location = new System.Drawing.Point(170, 35);
             this.rbCall.Name = "rbCall";
             this.rbCall.Size = new System.Drawing.Size(42, 17);
             this.rbCall.TabIndex = 0;
@@ -56,7 +56,7 @@
             // rbEmail
             // 
             this.rbEmail.AutoSize = true;
-            this.rbEmail.Location = new System.Drawing.Point(55, 72);
+            this.rbEmail.Location = new System.Drawing.Point(238, 35);
             this.rbEmail.Name = "rbEmail";
             this.rbEmail.Size = new System.Drawing.Size(50, 17);
             this.rbEmail.TabIndex = 1;
@@ -67,7 +67,7 @@
             // 
             this.rbMeeting.AutoSize = true;
             this.rbMeeting.Cursor = System.Windows.Forms.Cursors.Default;
-            this.rbMeeting.Location = new System.Drawing.Point(55, 107);
+            this.rbMeeting.Location = new System.Drawing.Point(315, 35);
             this.rbMeeting.Name = "rbMeeting";
             this.rbMeeting.Size = new System.Drawing.Size(63, 17);
             this.rbMeeting.TabIndex = 2;
@@ -77,7 +77,7 @@
             // lblField1
             // 
             this.lblField1.AutoSize = true;
-            this.lblField1.Location = new System.Drawing.Point(55, 146);
+            this.lblField1.Location = new System.Drawing.Point(167, 87);
             this.lblField1.Name = "lblField1";
             this.lblField1.Size = new System.Drawing.Size(75, 13);
             this.lblField1.TabIndex = 3;
@@ -85,7 +85,7 @@
             // 
             // txtField1
             // 
-            this.txtField1.Location = new System.Drawing.Point(151, 143);
+            this.txtField1.Location = new System.Drawing.Point(170, 103);
             this.txtField1.Name = "txtField1";
             this.txtField1.Size = new System.Drawing.Size(100, 20);
             this.txtField1.TabIndex = 4;
@@ -93,7 +93,7 @@
             // lblField2
             // 
             this.lblField2.AutoSize = true;
-            this.lblField2.Location = new System.Drawing.Point(55, 181);
+            this.lblField2.Location = new System.Drawing.Point(167, 126);
             this.lblField2.Name = "lblField2";
             this.lblField2.Size = new System.Drawing.Size(53, 13);
             this.lblField2.TabIndex = 5;
@@ -101,7 +101,7 @@
             // 
             // txtField2
             // 
-            this.txtField2.Location = new System.Drawing.Point(151, 174);
+            this.txtField2.Location = new System.Drawing.Point(170, 142);
             this.txtField2.Name = "txtField2";
             this.txtField2.Size = new System.Drawing.Size(372, 20);
             this.txtField2.TabIndex = 6;
@@ -109,7 +109,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(55, 242);
+            this.label3.Location = new System.Drawing.Point(167, 165);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(38, 13);
             this.label3.TabIndex = 7;
@@ -117,7 +117,7 @@
             // 
             // txtNotes
             // 
-            this.txtNotes.Location = new System.Drawing.Point(151, 242);
+            this.txtNotes.Location = new System.Drawing.Point(170, 181);
             this.txtNotes.Multiline = true;
             this.txtNotes.Name = "txtNotes";
             this.txtNotes.Size = new System.Drawing.Size(372, 73);
@@ -125,7 +125,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(632, 415);
+            this.btnCancel.Location = new System.Drawing.Point(259, 291);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 9;
@@ -135,7 +135,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(713, 415);
+            this.btnSave.Location = new System.Drawing.Point(368, 291);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 10;
@@ -147,7 +147,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(746, 410);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.txtNotes);

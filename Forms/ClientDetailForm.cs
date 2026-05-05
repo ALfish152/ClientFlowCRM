@@ -218,5 +218,10 @@ namespace ClientFlowCRM
         {
             Close();
         }
+
+        private void lblHeader_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
