@@ -223,5 +223,10 @@ namespace ClientFlowCRM
         {
 
         }
+
+        private void dgvInteractions_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

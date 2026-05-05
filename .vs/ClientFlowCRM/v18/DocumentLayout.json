@@ -3,24 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\olive\\source\\repos\\ALfish152\\ClientFlowCRM\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{EC49B95B-E4AC-4878-B295-C7F7975A9958}|ClientFlowCRM.csproj|c:\\users\\olive\\source\\repos\\alfish152\\clientflowcrm\\forms\\clientdetailform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{EC49B95B-E4AC-4878-B295-C7F7975A9958}|ClientFlowCRM.csproj|C:\\Users\\olive\\source\\repos\\ALfish152\\ClientFlowCRM\\forms\\clientdetailform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{EC49B95B-E4AC-4878-B295-C7F7975A9958}|ClientFlowCRM.csproj|solutionrelative:forms\\clientdetailform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EC49B95B-E4AC-4878-B295-C7F7975A9958}|ClientFlowCRM.csproj|c:\\users\\olive\\source\\repos\\alfish152\\clientflowcrm\\forms\\clientform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{EC49B95B-E4AC-4878-B295-C7F7975A9958}|ClientFlowCRM.csproj|solutionrelative:forms\\clientform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EC49B95B-E4AC-4878-B295-C7F7975A9958}|ClientFlowCRM.csproj|C:\\Users\\olive\\source\\repos\\ALfish152\\ClientFlowCRM\\forms\\clientform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EC49B95B-E4AC-4878-B295-C7F7975A9958}|ClientFlowCRM.csproj|solutionrelative:forms\\clientform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EC49B95B-E4AC-4878-B295-C7F7975A9958}|ClientFlowCRM.csproj|C:\\Users\\olive\\source\\repos\\ALfish152\\ClientFlowCRM\\forms\\dealform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EC49B95B-E4AC-4878-B295-C7F7975A9958}|ClientFlowCRM.csproj|solutionrelative:forms\\dealform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{EC49B95B-E4AC-4878-B295-C7F7975A9958}|ClientFlowCRM.csproj|c:\\users\\olive\\source\\repos\\alfish152\\clientflowcrm\\maindashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{EC49B95B-E4AC-4878-B295-C7F7975A9958}|ClientFlowCRM.csproj|solutionrelative:maindashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{EC49B95B-E4AC-4878-B295-C7F7975A9958}|ClientFlowCRM.csproj|C:\\Users\\olive\\source\\repos\\ALfish152\\ClientFlowCRM\\forms\\clientdetailform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{EC49B95B-E4AC-4878-B295-C7F7975A9958}|ClientFlowCRM.csproj|solutionrelative:forms\\clientdetailform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EC49B95B-E4AC-4878-B295-C7F7975A9958}|ClientFlowCRM.csproj|C:\\Users\\olive\\source\\repos\\ALfish152\\ClientFlowCRM\\maindashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EC49B95B-E4AC-4878-B295-C7F7975A9958}|ClientFlowCRM.csproj|solutionrelative:maindashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,11 +26,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MainDashboard.cs",
+              "DocumentMoniker": "C:\\Users\\olive\\source\\repos\\ALfish152\\ClientFlowCRM\\MainDashboard.cs",
+              "RelativeDocumentMoniker": "MainDashboard.cs",
+              "ToolTip": "C:\\Users\\olive\\source\\repos\\ALfish152\\ClientFlowCRM\\MainDashboard.cs",
+              "RelativeToolTip": "MainDashboard.cs",
+              "ViewState": "AgIAANkAAAAAAAAAAIAwwOsAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-05T05:53:10.799Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -45,62 +54,33 @@
               "ToolTip": "C:\\Users\\olive\\source\\repos\\ALfish152\\ClientFlowCRM\\Forms\\ClientDetailForm.cs [Design]",
               "RelativeToolTip": "Forms\\ClientDetailForm.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-04T09:36:14.318Z",
+              "WhenOpened": "2026-05-05T05:41:54.384Z",
               "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ClientForm.cs",
-              "DocumentMoniker": "C:\\Users\\olive\\source\\repos\\ALfish152\\ClientFlowCRM\\Forms\\ClientForm.cs",
-              "RelativeDocumentMoniker": "Forms\\ClientForm.cs",
-              "ToolTip": "C:\\Users\\olive\\source\\repos\\ALfish152\\ClientFlowCRM\\Forms\\ClientForm.cs",
-              "RelativeToolTip": "Forms\\ClientForm.cs",
-              "ViewState": "AgIAAF8AAAAAAAAAAAASwGYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-04T09:27:57.901Z",
-              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "ClientForm.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\olive\\source\\repos\\ALfish152\\ClientFlowCRM\\Forms\\ClientForm.cs",
-              "RelativeDocumentMoniker": "Forms\\ClientForm.cs",
-              "ToolTip": "C:\\Users\\olive\\source\\repos\\ALfish152\\ClientFlowCRM\\Forms\\ClientForm.cs [Design]",
-              "RelativeToolTip": "Forms\\ClientForm.cs [Design]",
+              "Title": "MainDashboard.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\olive\\source\\repos\\ALfish152\\ClientFlowCRM\\MainDashboard.cs",
+              "RelativeDocumentMoniker": "MainDashboard.cs",
+              "ToolTip": "C:\\Users\\olive\\source\\repos\\ALfish152\\ClientFlowCRM\\MainDashboard.cs [Design]",
+              "RelativeToolTip": "MainDashboard.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-04T09:30:19.212Z",
+              "WhenOpened": "2026-05-05T05:41:23.822Z",
               "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 2,
               "Title": "ClientDetailForm.cs",
               "DocumentMoniker": "C:\\Users\\olive\\source\\repos\\ALfish152\\ClientFlowCRM\\Forms\\ClientDetailForm.cs",
               "RelativeDocumentMoniker": "Forms\\ClientDetailForm.cs",
               "ToolTip": "C:\\Users\\olive\\source\\repos\\ALfish152\\ClientFlowCRM\\Forms\\ClientDetailForm.cs",
               "RelativeToolTip": "Forms\\ClientDetailForm.cs",
-              "ViewState": "AgIAALkAAAAAAAAAAAApwNAAAAASAAAAAAAAAA==",
+              "ViewState": "AgIAANIAAAAAAAAAAIAwwOcAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-04T09:28:13.403Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "DealForm.cs",
-              "DocumentMoniker": "C:\\Users\\olive\\source\\repos\\ALfish152\\ClientFlowCRM\\Forms\\DealForm.cs",
-              "RelativeDocumentMoniker": "Forms\\DealForm.cs",
-              "ToolTip": "C:\\Users\\olive\\source\\repos\\ALfish152\\ClientFlowCRM\\Forms\\DealForm.cs",
-              "RelativeToolTip": "Forms\\DealForm.cs",
-              "ViewState": "AgIAADQAAAAAAAAAAAAhwEQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-04T09:25:32.381Z"
             }
           ]
         }

@@ -77,12 +77,13 @@
             this.dgvDeals.AllowUserToAddRows = false;
             this.dgvDeals.AllowUserToDeleteRows = false;
             this.dgvDeals.AllowUserToResizeRows = false;
+            this.dgvDeals.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(27)))), ((int)(((byte)(39)))));
             this.dgvDeals.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colDealTitle,
             this.colDealValue,
             this.colDealStage,
             this.colDealProbability});
-            this.dgvDeals.Location = new System.Drawing.Point(12, 79);
+            this.dgvDeals.Location = new System.Drawing.Point(15, 79);
             this.dgvDeals.MultiSelect = false;
             this.dgvDeals.Name = "dgvDeals";
             this.dgvDeals.ReadOnly = true;
@@ -137,6 +138,7 @@
             this.dgvInteractions.AllowUserToAddRows = false;
             this.dgvInteractions.AllowUserToDeleteRows = false;
             this.dgvInteractions.AllowUserToResizeRows = false;
+            this.dgvInteractions.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(27)))), ((int)(((byte)(39)))));
             this.dgvInteractions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvInteractions.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colIntType,
@@ -150,6 +152,7 @@
             this.dgvInteractions.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvInteractions.Size = new System.Drawing.Size(934, 188);
             this.dgvInteractions.TabIndex = 4;
+            this.dgvInteractions.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvInteractions_CellContentClick);
             // 
             // colIntType
             // 
@@ -177,12 +180,13 @@
             // 
             // btnAddDeal
             // 
+            this.btnAddDeal.BackColor = System.Drawing.Color.White;
             this.btnAddDeal.Location = new System.Drawing.Point(709, 285);
             this.btnAddDeal.Name = "btnAddDeal";
             this.btnAddDeal.Size = new System.Drawing.Size(75, 23);
             this.btnAddDeal.TabIndex = 5;
             this.btnAddDeal.Text = "Add Deal";
-            this.btnAddDeal.UseVisualStyleBackColor = true;
+            this.btnAddDeal.UseVisualStyleBackColor = false;
             this.btnAddDeal.Click += new System.EventHandler(this.btnAddDeal_Click);
             // 
             // btnAddInteraction
@@ -259,6 +263,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(17)))), ((int)(((byte)(23)))));
             this.ClientSize = new System.Drawing.Size(1055, 576);
             this.Controls.Add(this.btnDeleteInteraction);
             this.Controls.Add(this.btnEditInteraction);

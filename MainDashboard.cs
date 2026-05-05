@@ -358,5 +358,15 @@ namespace ClientFlowCRM
                 $"Path: {path}\nExists: {exists}\nClients in memory: {_clients.Count}\n\nFirst 500 chars:\n{fileContent.Substring(0, Math.Min(500, fileContent.Length))}",
                 "Save Debug");
         }
+
+        private void groupBox5_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvClients_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
