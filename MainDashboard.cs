@@ -72,20 +72,19 @@ namespace ClientFlowCRM
                 g.DrawPath(pen, path);
         }
 
-
         private void SetupUI()
         {
             ApplyRoundedRegion(panel1);
             ApplyRoundedRegion(panel2);
             ApplyRoundedRegion(panel3);
             ApplyRoundedRegion(panel4);
-            ApplyRoundedRegion(panel5);
+            ApplyRoundedRegion(rrik);
 
             panel1.Paint += PaintCard;
             panel2.Paint += PaintCard;
             panel3.Paint += PaintCard;
             panel4.Paint += PaintCard;
-            panel5.Paint += PaintCard;
+            rrik.Paint += PaintCard;
 
             groupBox1.BackColor = Color.Transparent;
             groupBox2.BackColor = Color.Transparent;
@@ -102,7 +101,6 @@ namespace ClientFlowCRM
             ApplyRoundedButton(button1);
 
             ApplyRoundedRegion(lstPriority, 12);
-
             ApplyRoundedRegion(dgvClients, 12);
 
             RoundGroupBox(groupBox1);
@@ -110,6 +108,9 @@ namespace ClientFlowCRM
             RoundGroupBox(groupBox3);
             RoundGroupBox(groupBox4);
             RoundGroupBox(groupBox5);
+
+            // ✅ FIX: Enable owner-draw on the ListBox so we can control font rendering
+            lstPriority.DrawMode = DrawMode.OwnerDrawFixed;
         }
 
         private void RoundGroupBox(GroupBox gb, int radius = 14)
@@ -140,6 +141,7 @@ namespace ClientFlowCRM
 
             ApplyRoundedRegion(gb, radius);
         }
+
         private void ClearSelection()
         {
             try
@@ -173,6 +175,7 @@ namespace ClientFlowCRM
             }
         }
 
+        // ✅ FIX: Added emoji to list items here
         private void UpdatePriorityList()
         {
             lstPriority.Items.Clear();
@@ -182,7 +185,11 @@ namespace ClientFlowCRM
                 string days = c.LastContactDate.HasValue
                     ? $"{(DateTime.Now - c.LastContactDate.Value).Days}d ago"
                     : "Never";
-                lstPriority.Items.Add($"{c.Name} ({c.Temperature}) - {days}");
+
+                string emoji = c.Temperature == "Hot" ? "🔥" :
+                               c.Temperature == "Warm" ? "🌡️" :"";
+
+                lstPriority.Items.Add($"{c.Name} ({emoji}{c.Temperature}) - {days}");
             }
         }
 
@@ -211,7 +218,7 @@ namespace ClientFlowCRM
                     dgvClients.DataSource = _clients;
 
                     dgvClients.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(210, 213, 242);
-                    dgvClients.ColumnHeadersDefaultCellStyle.ForeColor = Color.FromArgb(30, 32, 36); 
+                    dgvClients.ColumnHeadersDefaultCellStyle.ForeColor = Color.FromArgb(30, 32, 36);
                     dgvClients.EnableHeadersVisualStyles = false;
 
                     string[] hiddenCols = { "Deals", "Interactions", "LastContactDate", "InteractionCount", "IsAtRisk", "CreatedDate" };
@@ -245,12 +252,33 @@ namespace ClientFlowCRM
                     {
                         if (row.DataBoundItem is Client client)
                         {
+                            // 1. Row color by Temperature
                             if (client.Temperature == "Hot")
-                                row.DefaultCellStyle.BackColor = Color.LightPink;
+                                row.DefaultCellStyle.BackColor = Color.FromArgb(255, 204, 204);
                             else if (client.Temperature == "Warm")
-                                row.DefaultCellStyle.BackColor = Color.LightGoldenrodYellow;
+                                row.DefaultCellStyle.BackColor = Color.FromArgb(255, 243, 205);
                             else
-                                row.DefaultCellStyle.BackColor = Color.LightBlue;
+                                row.DefaultCellStyle.BackColor = Color.FromArgb(204, 229, 255);
+
+                            // 2. Emoji in Temperature cell
+                            string emoji = client.Temperature == "Hot" ? "🔥 " :
+                                           client.Temperature == "Warm" ? "🌡️ " :"";
+
+                            // ✅ FIX: Use Segoe UI Emoji font for the Temperature cell
+                            if (dgvClients.Columns["Temperature"] != null)
+                            {
+                                row.Cells["Temperature"].Style.Font = new Font("Segoe UI Emoji", 9f);
+                                row.Cells["Temperature"].Value = emoji + client.Temperature;
+                            }
+
+                            // 3. Score color
+                            if (dgvClients.Columns["Score"] != null)
+                            {
+                                row.Cells["Score"].Style.Font = new Font("Segoe UI", 9, FontStyle.Bold);
+                                row.Cells["Score"].Style.ForeColor = client.Score >= 7 ? Color.Green :
+                                                                      client.Score >= 4 ? Color.Orange :
+                                                                      Color.Red;
+                            }
                         }
                     }
                 }
@@ -383,6 +411,31 @@ namespace ClientFlowCRM
                 "Save Debug");
         }
 
+        // ✅ FIX: DrawItem now uses "Segoe UI Emoji" font so emojis render correctly
+        private void lstPriority_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            if (e.Index < 0) return;
+
+            string item = lstPriority.Items[e.Index].ToString();
+
+            Color backColor = Color.White;
+            if (item.Contains("Warm"))
+                backColor = Color.FromArgb(255, 243, 205);
+            else if (item.Contains("Hot"))
+                backColor = Color.FromArgb(255, 204, 204);
+            else if (item.Contains("Cold"))
+                backColor = Color.FromArgb(204, 229, 255);
+
+            e.Graphics.FillRectangle(new SolidBrush(backColor), e.Bounds);
+
+            using (Font emojiFont = new Font("Segoe UI Emoji", e.Font.Size))
+            {
+                e.Graphics.DrawString(item, emojiFont, Brushes.Black, e.Bounds);
+            }
+
+            e.DrawFocusRectangle();
+        }
+
         private void lblTotalClients_Click(object sender, EventArgs e) { }
         private void lblTotalClientsSub_Click(object sender, EventArgs e) { }
         private void lblActiveDealsSub_Click(object sender, EventArgs e) { }
@@ -396,16 +449,12 @@ namespace ClientFlowCRM
         private void lstPriority_SelectedIndexChanged(object sender, EventArgs e) { }
         private void groupBox2_Enter(object sender, EventArgs e) { }
         private void lblAtRiskCount_Click(object sender, EventArgs e) { }
-        private void groupBox5_Enter(object sender, EventArgs e) {
-        }
+        private void groupBox5_Enter(object sender, EventArgs e) { }
         private void dgvClients_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
         private void groupBox1_Enter(object sender, EventArgs e) { }
         private void panel2_Paint(object sender, PaintEventArgs e) { }
         private void groupBox3_Enter(object sender, EventArgs e) { }
+        private void panel3_Paint(object sender, PaintEventArgs e) { }
 
-        private void panel3_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-    }
-}
+    }  // closes class
+}      // closes namespace

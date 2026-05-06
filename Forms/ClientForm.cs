@@ -85,18 +85,12 @@ namespace ClientFlowCRM
             MakeRoundedTextBox(txtEmail);
             MakeRoundedTextBox(txtPhone);
             MakeRoundedTextBox(txtCompany);
+            DrawAvatar(pictureBox1); 
         }
 
         private void pictureBox1_Paint(object sender, PaintEventArgs e)
         {
-            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-
-            e.Graphics.FillEllipse(new SolidBrush(Color.FromArgb(238, 237, 254)),
-                0, 0, 40, 40);
-            e.Graphics.DrawEllipse(new Pen(Color.FromArgb(83, 74, 183), 2),
-                13, 6, 14, 14);
-            e.Graphics.DrawArc(new Pen(Color.FromArgb(83, 74, 183), 2),
-                6, 22, 28, 20, 180, 180);
+  
         }
 
         private void label6_Click_1(object sender, EventArgs e)
@@ -153,5 +147,27 @@ namespace ClientFlowCRM
 
             panel.BringToFront();
         }
+
+        private void DrawAvatar(PictureBox pb)
+        {
+            Bitmap bmp = new Bitmap(pb.Width, pb.Height);
+            using (Graphics g = Graphics.FromImage(bmp))
+            {
+                g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+
+                // Blue circle background
+                g.FillEllipse(new SolidBrush(Color.FromArgb(70, 130, 180)),
+                    0, 0, pb.Width - 2, pb.Height - 2);
+
+                // Head
+                g.FillEllipse(Brushes.White, pb.Width / 2 - 12, 10, 24, 24);
+
+                // Body
+                g.FillEllipse(Brushes.White, pb.Width / 2 - 20, 38, 40, 30);
+            }
+            pb.Image = bmp;
+        }
+   
+
     }
 }

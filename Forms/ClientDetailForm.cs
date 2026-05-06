@@ -264,5 +264,20 @@ namespace ClientFlowCRM
         private void dgvInteractions_CellClick(object sender, DataGridViewCellEventArgs e) { dgvInteractions.CurrentCell = null; }
         private void dgvInteractions_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
         private void label3_Click(object sender, EventArgs e) { }
+
+        private void lblPhone_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblCompany_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblSource_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
