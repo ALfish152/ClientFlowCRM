@@ -81,7 +81,10 @@ namespace ClientFlowCRM
 
         private void ClientForm_Load(object sender, EventArgs e)
         {
-
+            MakeRoundedTextBox(txtName);
+            MakeRoundedTextBox(txtEmail);
+            MakeRoundedTextBox(txtPhone);
+            MakeRoundedTextBox(txtCompany);
         }
 
         private void pictureBox1_Paint(object sender, PaintEventArgs e)
@@ -109,6 +112,46 @@ namespace ClientFlowCRM
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MakeRoundedTextBox(System.Windows.Forms.TextBox txt, int radius = 8)
+        {
+            var panel = new System.Windows.Forms.Panel();
+            panel.Size = new System.Drawing.Size(txt.Width + 4, txt.Height + 6);
+            panel.Location = new System.Drawing.Point(txt.Left - 2, txt.Top - 3);
+            panel.BackColor = txt.BackColor;
+            panel.Parent = txt.Parent;
+
+            txt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            txt.Parent = panel;
+            txt.Location = new System.Drawing.Point(8, 5);
+            txt.Width = panel.Width - 16;
+            txt.BringToFront();
+
+            panel.Paint += (s, e) =>
+            {
+                var g = e.Graphics;
+                g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+                var rect = new Rectangle(0, 0, panel.Width - 1, panel.Height - 1);
+                int d = radius * 2;
+                using (var path = new System.Drawing.Drawing2D.GraphicsPath())
+                {
+                    path.AddArc(rect.X, rect.Y, d, d, 180, 90);
+                    path.AddArc(rect.Right - d, rect.Y, d, d, 270, 90);
+                    path.AddArc(rect.Right - d, rect.Bottom - d, d, d, 0, 90);
+                    path.AddArc(rect.X, rect.Bottom - d, d, d, 90, 90);
+                    path.CloseAllFigures();
+                    g.FillPath(new SolidBrush(txt.BackColor), path);
+                    g.DrawPath(new Pen(System.Drawing.Color.FromArgb(210, 213, 218), 1.5f), path);
+                }
+            };
+
+            panel.BringToFront();
         }
     }
 }

@@ -1,6 +1,6 @@
-﻿using System;
+﻿using ClientFlowCRM.Models;
+using System;
 using System.Windows.Forms;
-using ClientFlowCRM.Models;
 
 namespace ClientFlowCRM
 {
@@ -8,104 +8,96 @@ namespace ClientFlowCRM
     {
         public Interaction InteractionData { get; private set; }
 
-        public InteractionForm()
+        // Add new interaction
+        public InteractionForm(string clientName)
         {
             InitializeComponent();
-            this.Text = "Add New Interaction";
+            lblClientName.Text = "Client: " + clientName;
+            rbCall.Checked = true;
         }
 
-        public InteractionForm(Interaction existingInteraction)
+        // Edit existing interaction
+        public InteractionForm(Interaction existingInteraction, string clientName)
         {
             InitializeComponent();
-            this.Text = "Edit Interaction";
+            lblClientName.Text = "Client: " + clientName;
+
             txtNotes.Text = existingInteraction.Notes;
+
 
             if (existingInteraction is Call call)
             {
                 rbCall.Checked = true;
-                txtField1.Text = call.Duration.ToString();
+                numDuration.Value = call.Duration;
                 txtField2.Text = call.Outcome;
             }
-            else if (existingInteraction is Email email)
+            else if (existingInteraction is Email)
             {
                 rbEmail.Checked = true;
-                txtField1.Text = email.Subject;
             }
-            else if (existingInteraction is Meeting meeting)
+            else if (existingInteraction is Meeting)
             {
                 rbMeeting.Checked = true;
-                txtField1.Text = meeting.Location;
-                txtField2.Text = meeting.Attendees;
-            }
-
-            UpdateFields();
-        }
-
-        private void UpdateFields()
-        {
-            if (rbCall.Checked)
-            {
-                lblField1.Text = "Duration (min):";
-                lblField2.Text = "Outcome:";
-            }
-            else if (rbEmail.Checked)
-            {
-                lblField1.Text = "Subject:";
-                lblField2.Text = "Attachment? (y/n):";
-            }
-            else
-            {
-                lblField1.Text = "Location:";
-                lblField2.Text = "Attendees:";
             }
         }
-
-        private void rbCall_CheckedChanged(object sender, EventArgs e) => UpdateFields();
-        private void rbEmail_CheckedChanged(object sender, EventArgs e) => UpdateFields();
-        private void rbMeeting_CheckedChanged(object sender, EventArgs e) => UpdateFields();
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            Interaction interaction;
+            if (string.IsNullOrWhiteSpace(txtField2.Text) && rbCall.Checked)
+            {
+                MessageBox.Show("Outcome is required for a Call.", "Validation",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtField2.Focus();
+                return;
+            }
+
+            if (numDuration.Value == 0 && rbCall.Checked)
+            {
+                MessageBox.Show("Please enter a duration.", "Validation",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                numDuration.Focus();
+                return;
+            }
 
             if (rbCall.Checked)
             {
-                int.TryParse(txtField1.Text, out int duration);
-                interaction = new Call
+                InteractionData = new Call
                 {
-                    Duration = duration,
-                    Outcome = txtField2.Text,
-                    Notes = txtNotes.Text
+                    Duration = (int)numDuration.Value,
+                    Outcome = txtField2.Text.Trim(),
+                    Notes = txtNotes.Text.Trim(),
                 };
             }
             else if (rbEmail.Checked)
             {
-                interaction = new Email
+                InteractionData = new Email
                 {
-                    Subject = txtField1.Text,
-                    Notes = txtNotes.Text
+                    Subject = txtField2.Text.Trim(),
+                    Notes = txtNotes.Text.Trim(),
                 };
             }
-            else
+            else if (rbMeeting.Checked)
             {
-                interaction = new Meeting
+                InteractionData = new Meeting
                 {
-                    Location = txtField1.Text,
-                    Attendees = txtField2.Text,
-                    Notes = txtNotes.Text
+                    Notes = txtNotes.Text.Trim(),
                 };
             }
 
-            interaction.UpdateSummary();
-            InteractionData = interaction;
             DialogResult = DialogResult.OK;
             Close();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            DialogResult = DialogResult.Cancel;
-            Close();
+            var result = MessageBox.Show("Discard this interaction?", "Cancel",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                DialogResult = DialogResult.Cancel;
+                Close();
+            }
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 using ClientFlowCRM.Models;
 
@@ -41,29 +42,69 @@ namespace ClientFlowCRM
 
         private void LoadData()
         {
-            lblHeader.Text = $"{_client.Name} - {_client.Temperature} (Score: {_client.Score})";
+            lblHeader.Text = _client.Name;
+            lblSubInfo.Text = $"Score: {_client.Score:F1}   |   Source: {_client.Source}";
+
+            lblTempBadge.Text = _client.Temperature;
+            switch (_client.Temperature)
+            {
+                case "Hot":
+                    lblTempBadge.BackColor = Color.FromArgb(220, 38, 38);
+                    break;
+                case "Warm":
+                    lblTempBadge.BackColor = Color.FromArgb(217, 119, 6);
+                    break;
+                default:
+                    lblTempBadge.BackColor = Color.FromArgb(96, 165, 250);
+                    break;
+            }
+
+            lblEmail.Text = $"📧  {(_client.Email ?? "—")}";
+            lblPhone.Text = $"📞  {(_client.Phone ?? "—")}";
+            lblCompany.Text = $"🏢  {(_client.Company ?? "—")}";
+            lblSource.Text = $"🔗  {(_client.Source ?? "—")}";
+
+            this.Text = $"Client Details — {_client.Name}";
+
             dgvDeals.DataSource = null;
             dgvDeals.DataSource = _client.Deals;
+
             dgvInteractions.DataSource = null;
             dgvInteractions.DataSource = _client.Interactions;
+
             ClearAllSelections();
         }
 
-        private void dgvDeals_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void panelClientInfo_Paint(object sender, PaintEventArgs e)
         {
-            dgvDeals.CurrentCell = null;
+            var g = e.Graphics;
+            g.SmoothingMode = SmoothingMode.AntiAlias;
+            var rect = new Rectangle(1, 1, panelClientInfo.Width - 2, panelClientInfo.Height - 2);
+            using (var path = RoundedPath(rect, 12))
+            using (var brush = new SolidBrush(Color.White))
+                g.FillPath(brush, path);
+            using (var path = RoundedPath(rect, 12))
+            using (var pen = new Pen(Color.FromArgb(220, 223, 228), 1f))
+                g.DrawPath(pen, path);
         }
 
-        private void dgvInteractions_CellClick(object sender, DataGridViewCellEventArgs e)
+        private GraphicsPath RoundedPath(Rectangle rect, int radius)
         {
-            dgvInteractions.CurrentCell = null;
+            int d = radius * 2;
+            var path = new GraphicsPath();
+            path.AddArc(rect.X, rect.Y, d, d, 180, 90);
+            path.AddArc(rect.Right - d, rect.Y, d, d, 270, 90);
+            path.AddArc(rect.Right - d, rect.Bottom - d, d, d, 0, 90);
+            path.AddArc(rect.X, rect.Bottom - d, d, d, 90, 90);
+            path.CloseAllFigures();
+            return path;
         }
 
-        // ==================== DEAL BUTTONS ====================
+        // ── DEALS ────────────────────────────────────────────
 
         private void btnAddDeal_Click(object sender, EventArgs e)
         {
-            var form = new DealForm();
+            var form = new DealForm(_client.Name);
             if (form.ShowDialog() == DialogResult.OK)
             {
                 form.DealData.Id = _nextDealId++;
@@ -85,7 +126,7 @@ namespace ClientFlowCRM
             }
 
             Deal selected = (Deal)dgvDeals.SelectedRows[0].DataBoundItem;
-            var form = new DealForm(selected);
+            var form = new DealForm(selected, _client.Name);
 
             if (form.ShowDialog() == DialogResult.OK)
             {
@@ -121,11 +162,11 @@ namespace ClientFlowCRM
             }
         }
 
-        // ==================== INTERACTION BUTTONS ====================
+        // ── INTERACTIONS ─────────────────────────────────────
 
         private void btnAddInteraction_Click(object sender, EventArgs e)
         {
-            var form = new InteractionForm();
+            var form = new InteractionForm(_client.Name);
             if (form.ShowDialog() == DialogResult.OK)
             {
                 form.InteractionData.Id = _nextInteractionId++;
@@ -145,7 +186,7 @@ namespace ClientFlowCRM
             }
 
             Interaction selected = (Interaction)dgvInteractions.SelectedRows[0].DataBoundItem;
-            var form = new InteractionForm(selected);
+            var form = new InteractionForm(selected, _client.Name);
 
             if (form.ShowDialog() == DialogResult.OK)
             {
@@ -198,7 +239,7 @@ namespace ClientFlowCRM
             }
         }
 
-        // ==================== NAVIGATION ====================
+        // ── CLIENT ───────────────────────────────────────────
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
@@ -214,19 +255,14 @@ namespace ClientFlowCRM
             }
         }
 
-        private void btnBack_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
+        private void btnBack_Click(object sender, EventArgs e) => Close();
 
-        private void lblHeader_Click(object sender, EventArgs e)
-        {
+        // ── EMPTY HANDLERS ───────────────────────────────────
 
-        }
-
-        private void dgvInteractions_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
+        private void lblHeader_Click(object sender, EventArgs e) { }
+        private void dgvDeals_CellClick(object sender, DataGridViewCellEventArgs e) { dgvDeals.CurrentCell = null; }
+        private void dgvInteractions_CellClick(object sender, DataGridViewCellEventArgs e) { dgvInteractions.CurrentCell = null; }
+        private void dgvInteractions_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
+        private void label3_Click(object sender, EventArgs e) { }
     }
 }
