@@ -109,8 +109,15 @@ namespace ClientFlowCRM
             RoundGroupBox(groupBox4);
             RoundGroupBox(groupBox5);
 
-            // ✅ FIX: Enable owner-draw on the ListBox so we can control font rendering
             lstPriority.DrawMode = DrawMode.OwnerDrawFixed;
+            var lblPriorityTitle = new Label();
+            lblPriorityTitle.Text = "⭐ Follow-up Priority";
+            lblPriorityTitle.Font = new Font("Segoe UI", 9f, FontStyle.Bold);
+            lblPriorityTitle.ForeColor = Color.FromArgb(30, 32, 60);
+            lblPriorityTitle.AutoSize = true;
+            lblPriorityTitle.Left = lstPriority.Left;
+            lblPriorityTitle.Top = lstPriority.Top - 22;
+            lstPriority.Parent.Controls.Add(lblPriorityTitle);
         }
 
         private void RoundGroupBox(GroupBox gb, int radius = 14)
@@ -175,7 +182,6 @@ namespace ClientFlowCRM
             }
         }
 
-        // ✅ FIX: Added emoji to list items here
         private void UpdatePriorityList()
         {
             lstPriority.Items.Clear();
@@ -186,8 +192,10 @@ namespace ClientFlowCRM
                     ? $"{(DateTime.Now - c.LastContactDate.Value).Days}d ago"
                     : "Never";
 
+        
                 string emoji = c.Temperature == "Hot" ? "🔥" :
-                               c.Temperature == "Warm" ? "🌡️" :"";
+                               c.Temperature == "Warm" ? "🌡" :
+                               c.Temperature == "Cold" ? "❄" : "";
 
                 lstPriority.Items.Add($"{c.Name} ({emoji}{c.Temperature}) - {days}");
             }
@@ -241,7 +249,7 @@ namespace ClientFlowCRM
                         ["Company"] = 150,
                         ["Source"] = 100,
                         ["Score"] = 80,
-                        ["Temperature"] = 100,
+                        ["Temperature"] = 110,
                         ["TotalDealValue"] = 120
                     };
                     foreach (var kv in widths)
@@ -252,7 +260,7 @@ namespace ClientFlowCRM
                     {
                         if (row.DataBoundItem is Client client)
                         {
-                            // 1. Row color by Temperature
+              
                             if (client.Temperature == "Hot")
                                 row.DefaultCellStyle.BackColor = Color.FromArgb(255, 204, 204);
                             else if (client.Temperature == "Warm")
@@ -260,18 +268,17 @@ namespace ClientFlowCRM
                             else
                                 row.DefaultCellStyle.BackColor = Color.FromArgb(204, 229, 255);
 
-                            // 2. Emoji in Temperature cell
+                        
                             string emoji = client.Temperature == "Hot" ? "🔥 " :
-                                           client.Temperature == "Warm" ? "🌡️ " :"";
+                                           client.Temperature == "Warm" ? "🌡 " : "❄ ";
 
-                            // ✅ FIX: Use Segoe UI Emoji font for the Temperature cell
                             if (dgvClients.Columns["Temperature"] != null)
                             {
                                 row.Cells["Temperature"].Style.Font = new Font("Segoe UI Emoji", 9f);
                                 row.Cells["Temperature"].Value = emoji + client.Temperature;
                             }
 
-                            // 3. Score color
+                         
                             if (dgvClients.Columns["Score"] != null)
                             {
                                 row.Cells["Score"].Style.Font = new Font("Segoe UI", 9, FontStyle.Bold);
@@ -411,7 +418,6 @@ namespace ClientFlowCRM
                 "Save Debug");
         }
 
-        // ✅ FIX: DrawItem now uses "Segoe UI Emoji" font so emojis render correctly
         private void lstPriority_DrawItem(object sender, DrawItemEventArgs e)
         {
             if (e.Index < 0) return;
@@ -428,9 +434,13 @@ namespace ClientFlowCRM
 
             e.Graphics.FillRectangle(new SolidBrush(backColor), e.Bounds);
 
+            RectangleF paddedBounds = new RectangleF(
+                e.Bounds.X + 6, e.Bounds.Y + 2,
+                e.Bounds.Width - 6, e.Bounds.Height);
+
             using (Font emojiFont = new Font("Segoe UI Emoji", e.Font.Size))
             {
-                e.Graphics.DrawString(item, emojiFont, Brushes.Black, e.Bounds);
+                e.Graphics.DrawString(item, emojiFont, Brushes.Black, paddedBounds);
             }
 
             e.DrawFocusRectangle();
@@ -456,5 +466,5 @@ namespace ClientFlowCRM
         private void groupBox3_Enter(object sender, EventArgs e) { }
         private void panel3_Paint(object sender, PaintEventArgs e) { }
 
-    }  // closes class
-}      // closes namespace
+    }  
+}      
