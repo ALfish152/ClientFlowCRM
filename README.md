@@ -134,8 +134,8 @@ Negotiation = 75% | Won = 100% | Lost = 0%
 ## Developers
 
 - **Aeron A. Almira**
-- **Jmar Oliver**
-- **Ken Mendoza**
+- **Jmar C. Oliver**
+- **Ken G. Mendoza**
 
 ---
 
