@@ -10,7 +10,7 @@ The application provides a centralized platform where users can store client inf
 
 ## UML Diagram
 
-![UML Class Diagram](uml.png)
+![UML Class Diagram](UML.png)
 
 ---
 
