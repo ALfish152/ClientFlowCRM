@@ -27,6 +27,77 @@ namespace ClientFlowCRM
             LoadData();
         }
 
+        private void ConfigureDealsGrid()
+        {
+            dgvDeals.AutoGenerateColumns = false;
+            dgvDeals.Columns.Clear();
+
+            var columns = new (string Name, string Header, string DataProperty, int WidthPercent)[]
+            {
+        ("colTitle",       "Title",           "Title",          35),
+        ("colValue",       "Value (₱)",       "Value",          20),
+        ("colStage",       "Stage",           "Stage",          25),
+        ("colProbability", "Win Probability", "WinProbability", 20)
+            };
+
+            foreach (var col in columns)
+            {
+                var dgvCol = new DataGridViewTextBoxColumn
+                {
+                    Name = col.Name,
+                    HeaderText = col.Header,
+                    DataPropertyName = col.DataProperty
+                };
+                dgvDeals.Columns.Add(dgvCol);
+            }
+
+            dgvDeals.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvDeals.ReadOnly = true;
+            dgvDeals.AllowUserToAddRows = false;
+            dgvDeals.AllowUserToDeleteRows = false;
+            dgvDeals.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
+            if (dgvDeals.Columns["colValue"] != null)
+                dgvDeals.Columns["colValue"].DefaultCellStyle.Format = "N2";
+
+            if (dgvDeals.Columns["colProbability"] != null)
+                dgvDeals.Columns["colProbability"].DefaultCellStyle.Format = "0%";
+        }
+
+        private void ConfigureInteractionsGrid()
+        {
+            dgvInteractions.AutoGenerateColumns = false;
+            dgvInteractions.Columns.Clear();
+
+            var columns = new (string Name, string Header, string DataProperty, int WidthPercent)[]
+            {
+        ("colIntType",    "Type",       "Type",      15),
+        ("colIntSummary", "Details",    "Summary",   45),
+        ("colIntDate",    "Date",       "Timestamp", 25),
+        ("colIntNotes",   "Notes",      "Notes",     15)
+            };
+
+            foreach (var col in columns)
+            {
+                var dgvCol = new DataGridViewTextBoxColumn
+                {
+                    Name = col.Name,
+                    HeaderText = col.Header,
+                    DataPropertyName = col.DataProperty
+                };
+                dgvInteractions.Columns.Add(dgvCol);
+            }
+
+            dgvInteractions.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvInteractions.ReadOnly = true;
+            dgvInteractions.AllowUserToAddRows = false;
+            dgvInteractions.AllowUserToDeleteRows = false;
+            dgvInteractions.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
+            if (dgvInteractions.Columns["colIntDate"] != null)
+                dgvInteractions.Columns["colIntDate"].DefaultCellStyle.Format = "MMM dd, yyyy  hh:mm tt";
+        }
+
         private void ClientDetailForm_Shown(object sender, EventArgs e)
         {
             ClearAllSelections();
@@ -65,6 +136,10 @@ namespace ClientFlowCRM
             lblSource.Text = $"🔗  {(_client.Source ?? "—")}";
 
             this.Text = $"Client Details — {_client.Name}";
+
+            // Configure and load grids
+            ConfigureDealsGrid();
+            ConfigureInteractionsGrid();
 
             dgvDeals.DataSource = null;
             dgvDeals.DataSource = _client.Deals;

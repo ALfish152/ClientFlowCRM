@@ -21,7 +21,9 @@ namespace ClientFlowCRM
         public MainDashboard()
         {
             InitializeComponent();
-
+            this.MaximizeBox = false;
+            this.WindowState = FormWindowState.Normal;  
+            this.StartPosition = FormStartPosition.CenterScreen;  
             _clients = DataManager.LoadData();
             if (_clients == null)
                 _clients = new List<Client>();
@@ -97,7 +99,6 @@ namespace ClientFlowCRM
             ApplyRoundedButton(btnRefresh);
             ApplyRoundedButton(btnEditClient);
             ApplyRoundedButton(btnDeleteClient);
-            ApplyRoundedButton(btnTestSave);
             ApplyRoundedButton(button1);
 
             ApplyRoundedRegion(lstPriority, 12);
@@ -214,6 +215,48 @@ namespace ClientFlowCRM
             label3.Text = $"{atRisk} at risk";
         }
 
+        private void ConfigureClientsGrid()
+        {
+            dgvClients.AutoGenerateColumns = false;
+            dgvClients.Columns.Clear();
+
+            var columns = new (string Name, string Header, string DataProperty, int WidthPercent)[]
+            {
+        ("colName",          "Name",             "Name",            18),
+        ("colEmail",         "Email",            "Email",           20),
+        ("colPhone",         "Phone",            "Phone",           13),
+        ("colCompany",       "Company",          "Company",         16),
+        ("colSource",        "Source",           "Source",          10),
+        ("colScore",         "Score",            "Score",            7),
+        ("colTemperature",   "Temperature",      "Temperature",     10),
+        ("colTotalDealValue","Total Deal Value", "TotalDealValue",   6)
+            };
+
+            foreach (var col in columns)
+            {
+                var dgvCol = new DataGridViewTextBoxColumn
+                {
+                    Name = col.Name,
+                    HeaderText = col.Header,
+                    DataPropertyName = col.DataProperty
+                };
+                dgvClients.Columns.Add(dgvCol);
+            }
+
+            dgvClients.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvClients.ReadOnly = true;
+            dgvClients.AllowUserToAddRows = false;
+            dgvClients.AllowUserToDeleteRows = false;
+            dgvClients.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
+            dgvClients.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(210, 213, 242);
+            dgvClients.ColumnHeadersDefaultCellStyle.ForeColor = Color.FromArgb(30, 32, 36);
+            dgvClients.EnableHeadersVisualStyles = false;
+
+            if (dgvClients.Columns["colTotalDealValue"] != null)
+                dgvClients.Columns["colTotalDealValue"].DefaultCellStyle.Format = "₱#,##0";
+        }
+
         private void RefreshGrid()
         {
             try
@@ -223,44 +266,15 @@ namespace ClientFlowCRM
 
                 if (_clients != null && _clients.Count > 0)
                 {
+                    if (dgvClients.Columns.Count == 0)
+                        ConfigureClientsGrid();
+
                     dgvClients.DataSource = _clients;
-
-                    dgvClients.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(210, 213, 242);
-                    dgvClients.ColumnHeadersDefaultCellStyle.ForeColor = Color.FromArgb(30, 32, 36);
-                    dgvClients.EnableHeadersVisualStyles = false;
-
-                    string[] hiddenCols = { "Deals", "Interactions", "LastContactDate", "InteractionCount", "IsAtRisk", "CreatedDate" };
-                    foreach (var col in hiddenCols)
-                        if (dgvClients.Columns[col] != null)
-                            dgvClients.Columns[col].Visible = false;
-
-                    string[] columnOrder = { "Id", "Name", "Email", "Phone", "Company", "Source", "Score", "Temperature", "TotalDealValue" };
-                    foreach (string colName in columnOrder)
-                        if (dgvClients.Columns[colName] != null)
-                            dgvClients.Columns[colName].DisplayIndex = Array.IndexOf(columnOrder, colName);
-
-                    dgvClients.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
-                    var widths = new Dictionary<string, int>
-                    {
-                        ["Id"] = 40,
-                        ["Name"] = 150,
-                        ["Email"] = 180,
-                        ["Phone"] = 110,
-                        ["Company"] = 150,
-                        ["Source"] = 100,
-                        ["Score"] = 80,
-                        ["Temperature"] = 110,
-                        ["TotalDealValue"] = 120
-                    };
-                    foreach (var kv in widths)
-                        if (dgvClients.Columns[kv.Key] != null)
-                            dgvClients.Columns[kv.Key].Width = kv.Value;
 
                     foreach (DataGridViewRow row in dgvClients.Rows)
                     {
                         if (row.DataBoundItem is Client client)
                         {
-              
                             if (client.Temperature == "Hot")
                                 row.DefaultCellStyle.BackColor = Color.FromArgb(255, 204, 204);
                             else if (client.Temperature == "Warm")
@@ -268,23 +282,21 @@ namespace ClientFlowCRM
                             else
                                 row.DefaultCellStyle.BackColor = Color.FromArgb(204, 229, 255);
 
-                        
                             string emoji = client.Temperature == "Hot" ? "🔥 " :
                                            client.Temperature == "Warm" ? "🌡 " : "❄ ";
 
-                            if (dgvClients.Columns["Temperature"] != null)
+                            if (dgvClients.Columns["colTemperature"] != null)
                             {
-                                row.Cells["Temperature"].Style.Font = new Font("Segoe UI Emoji", 9f);
-                                row.Cells["Temperature"].Value = emoji + client.Temperature;
+                                row.Cells["colTemperature"].Style.Font = new Font("Segoe UI Emoji", 9f);
+                                row.Cells["colTemperature"].Value = emoji + client.Temperature;
                             }
 
-                         
-                            if (dgvClients.Columns["Score"] != null)
+                            if (dgvClients.Columns["colScore"] != null)
                             {
-                                row.Cells["Score"].Style.Font = new Font("Segoe UI", 9, FontStyle.Bold);
-                                row.Cells["Score"].Style.ForeColor = client.Score >= 7 ? Color.Green :
-                                                                      client.Score >= 4 ? Color.Orange :
-                                                                      Color.Red;
+                                row.Cells["colScore"].Style.Font = new Font("Segoe UI", 9, FontStyle.Bold);
+                                row.Cells["colScore"].Style.ForeColor = client.Score >= 7 ? Color.Green :
+                                                                         client.Score >= 4 ? Color.Orange :
+                                                                         Color.Red;
                             }
                         }
                     }
