@@ -228,7 +228,7 @@ namespace ClientFlowCRM
         ("colCompany",       "Company",          "Company",         16),
         ("colSource",        "Source",           "Source",          10),
         ("colScore",         "Score",            "Score",            7),
-        ("colTemperature",   "Temperature",      "Temperature",     10),
+        ("colTemperature",   "Temperature",      "",     10),
         ("colTotalDealValue","Total Deal Value", "TotalDealValue",   6)
             };
 
@@ -282,13 +282,12 @@ namespace ClientFlowCRM
                             else
                                 row.DefaultCellStyle.BackColor = Color.FromArgb(204, 229, 255);
 
-                            string emoji = client.Temperature == "Hot" ? "🔥 " :
-                                           client.Temperature == "Warm" ? "🌡 " : "❄ ";
-
                             if (dgvClients.Columns["colTemperature"] != null)
                             {
+                                string displayEmoji = client.Temperature == "Hot" ? "🔥 " :
+                                                      client.Temperature == "Warm" ? "🌡 " : "❄ ";
                                 row.Cells["colTemperature"].Style.Font = new Font("Segoe UI Emoji", 9f);
-                                row.Cells["colTemperature"].Value = emoji + client.Temperature;
+                                row.Cells["colTemperature"].Value = displayEmoji + client.Temperature;
                             }
 
                             if (dgvClients.Columns["colScore"] != null)
