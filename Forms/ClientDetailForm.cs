@@ -23,6 +23,18 @@ namespace ClientFlowCRM
             _nextDealId = nextDealId;
             _nextInteractionId = nextInteractionId;
 
+            dgvDeals.AllowUserToAddRows = false;
+            dgvDeals.AllowUserToDeleteRows = false;
+            dgvDeals.ReadOnly = true;
+            dgvDeals.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvDeals.MultiSelect = false;
+
+            dgvInteractions.AllowUserToAddRows = false;
+            dgvInteractions.AllowUserToDeleteRows = false;
+            dgvInteractions.ReadOnly = true;
+            dgvInteractions.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvInteractions.MultiSelect = false;
+
             this.Shown += ClientDetailForm_Shown;
             LoadData();
         }
@@ -31,6 +43,7 @@ namespace ClientFlowCRM
         {
             dgvDeals.AutoGenerateColumns = false;
             dgvDeals.Columns.Clear();
+            dgvDeals.DataSource = null;  // Unbind before reconfiguring
 
             var columns = new (string Name, string Header, string DataProperty, int WidthPercent)[]
             {
@@ -42,24 +55,18 @@ namespace ClientFlowCRM
 
             foreach (var col in columns)
             {
-                var dgvCol = new DataGridViewTextBoxColumn
+                dgvDeals.Columns.Add(new DataGridViewTextBoxColumn
                 {
                     Name = col.Name,
                     HeaderText = col.Header,
                     DataPropertyName = col.DataProperty
-                };
-                dgvDeals.Columns.Add(dgvCol);
+                });
             }
 
             dgvDeals.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvDeals.ReadOnly = true;
-            dgvDeals.AllowUserToAddRows = false;
-            dgvDeals.AllowUserToDeleteRows = false;
-            dgvDeals.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
             if (dgvDeals.Columns["colValue"] != null)
                 dgvDeals.Columns["colValue"].DefaultCellStyle.Format = "N2";
-
             if (dgvDeals.Columns["colProbability"] != null)
                 dgvDeals.Columns["colProbability"].DefaultCellStyle.Format = "0%";
         }
@@ -68,6 +75,7 @@ namespace ClientFlowCRM
         {
             dgvInteractions.AutoGenerateColumns = false;
             dgvInteractions.Columns.Clear();
+            dgvInteractions.DataSource = null;  // Unbind before reconfiguring
 
             var columns = new (string Name, string Header, string DataProperty, int WidthPercent)[]
             {
@@ -79,20 +87,15 @@ namespace ClientFlowCRM
 
             foreach (var col in columns)
             {
-                var dgvCol = new DataGridViewTextBoxColumn
+                dgvInteractions.Columns.Add(new DataGridViewTextBoxColumn
                 {
                     Name = col.Name,
                     HeaderText = col.Header,
                     DataPropertyName = col.DataProperty
-                };
-                dgvInteractions.Columns.Add(dgvCol);
+                });
             }
 
             dgvInteractions.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvInteractions.ReadOnly = true;
-            dgvInteractions.AllowUserToAddRows = false;
-            dgvInteractions.AllowUserToDeleteRows = false;
-            dgvInteractions.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
             if (dgvInteractions.Columns["colIntDate"] != null)
                 dgvInteractions.Columns["colIntDate"].DefaultCellStyle.Format = "MMM dd, yyyy  hh:mm tt";
@@ -105,10 +108,24 @@ namespace ClientFlowCRM
 
         private void ClearAllSelections()
         {
-            dgvDeals.ClearSelection();
-            dgvDeals.CurrentCell = null;
-            dgvInteractions.ClearSelection();
-            dgvInteractions.CurrentCell = null;
+            try
+            {
+                if (dgvDeals.Rows.Count > 0)
+                    dgvDeals.ClearSelection();
+                if (dgvInteractions.Rows.Count > 0)
+                    dgvInteractions.ClearSelection();
+            }
+            catch { }
+        }
+
+        private void dgvDeals_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Do nothing - let the row select normally
+        }
+
+        private void dgvInteractions_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Do nothing - let the row select normally
         }
 
         private void LoadData()
@@ -335,8 +352,6 @@ namespace ClientFlowCRM
         // ── EMPTY HANDLERS ───────────────────────────────────
 
         private void lblHeader_Click(object sender, EventArgs e) { }
-        private void dgvDeals_CellClick(object sender, DataGridViewCellEventArgs e) { dgvDeals.CurrentCell = null; }
-        private void dgvInteractions_CellClick(object sender, DataGridViewCellEventArgs e) { dgvInteractions.CurrentCell = null; }
         private void dgvInteractions_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
         private void label3_Click(object sender, EventArgs e) { }
 
