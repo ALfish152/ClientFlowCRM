@@ -75,14 +75,15 @@ namespace ClientFlowCRM
         {
             dgvInteractions.AutoGenerateColumns = false;
             dgvInteractions.Columns.Clear();
-            dgvInteractions.DataSource = null;  // Unbind before reconfiguring
+            dgvInteractions.DataSource = null;
 
             var columns = new (string Name, string Header, string DataProperty, int WidthPercent)[]
             {
-        ("colIntType",    "Type",       "Type",      15),
-        ("colIntSummary", "Details",    "Summary",   45),
-        ("colIntDate",    "Date",       "Timestamp", 25),
-        ("colIntNotes",   "Notes",      "Notes",     15)
+        ("colIntType",    "Type",      "Type",      12),
+        ("colIntSummary", "Details",   "Summary",   35),
+        ("colIntDuration","Duration",  "Duration",  12),
+        ("colIntDate",    "Date",      "Timestamp", 21),
+        ("colIntNotes",   "Notes",     "Notes",     20)
             };
 
             foreach (var col in columns)
@@ -282,23 +283,12 @@ namespace ClientFlowCRM
 
             if (form.ShowDialog() == DialogResult.OK)
             {
-                selected.Notes = form.InteractionData.Notes;
+                _client.Interactions.Remove(selected);
 
-                if (selected is Call call && form.InteractionData is Call newCall)
-                {
-                    call.Duration = newCall.Duration;
-                    call.Outcome = newCall.Outcome;
-                }
-                else if (selected is Email email && form.InteractionData is Email newEmail)
-                {
-                    email.Subject = newEmail.Subject;
-                }
-                else if (selected is Meeting meeting && form.InteractionData is Meeting newMeeting)
-                {
-                    meeting.Location = newMeeting.Location;
-                    meeting.Attendees = newMeeting.Attendees;
-                }
+                form.InteractionData.Id = selected.Id;
+                form.InteractionData.ClientId = _client.Id;
 
+                _client.Interactions.Add(form.InteractionData);
                 _client.UpdateCalculatedFields();
                 LoadData();
             }
@@ -368,6 +358,23 @@ namespace ClientFlowCRM
         private void lblSource_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void dgvInteractions_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvInteractions.Columns[e.ColumnIndex].Name == "colIntDuration")
+            {
+                if (e.Value is int duration && duration == 0)
+                {
+                    e.Value = "";
+                    e.FormattingApplied = true;
+                }
+                else if (e.Value is int dur && dur > 0)
+                {
+                    e.Value = $"{dur} min";
+                    e.FormattingApplied = true;
+                }
+            }
         }
     }
 }

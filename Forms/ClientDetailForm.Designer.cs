@@ -57,7 +57,7 @@
             // 
             this.panelTopBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(103)))), ((int)(((byte)(242)))));
             this.panelTopBar.Location = new System.Drawing.Point(0, 0);
-            this.panelTopBar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panelTopBar.Margin = new System.Windows.Forms.Padding(2);
             this.panelTopBar.Name = "panelTopBar";
             this.panelTopBar.Size = new System.Drawing.Size(975, 4);
             this.panelTopBar.TabIndex = 50;
@@ -74,7 +74,7 @@
             this.panelClientInfo.Controls.Add(this.lblCompany);
             this.panelClientInfo.Controls.Add(this.lblSource);
             this.panelClientInfo.Location = new System.Drawing.Point(12, 13);
-            this.panelClientInfo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panelClientInfo.Margin = new System.Windows.Forms.Padding(2);
             this.panelClientInfo.Name = "panelClientInfo";
             this.panelClientInfo.Size = new System.Drawing.Size(951, 98);
             this.panelClientInfo.TabIndex = 51;
@@ -222,7 +222,7 @@
             this.dgvDeals.EnableHeadersVisualStyles = false;
             this.dgvDeals.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(223)))), ((int)(((byte)(228)))));
             this.dgvDeals.Location = new System.Drawing.Point(11, 164);
-            this.dgvDeals.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvDeals.Margin = new System.Windows.Forms.Padding(2);
             this.dgvDeals.MultiSelect = false;
             this.dgvDeals.Name = "dgvDeals";
             this.dgvDeals.ReadOnly = true;
@@ -276,7 +276,7 @@
             this.btnAddDeal.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnAddDeal.ForeColor = System.Drawing.Color.White;
             this.btnAddDeal.Location = new System.Drawing.Point(633, 352);
-            this.btnAddDeal.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAddDeal.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddDeal.Name = "btnAddDeal";
             this.btnAddDeal.Size = new System.Drawing.Size(108, 28);
             this.btnAddDeal.TabIndex = 5;
@@ -292,7 +292,7 @@
             this.btnEditDeal.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnEditDeal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(32)))), ((int)(((byte)(36)))));
             this.btnEditDeal.Location = new System.Drawing.Point(745, 352);
-            this.btnEditDeal.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnEditDeal.Margin = new System.Windows.Forms.Padding(2);
             this.btnEditDeal.Name = "btnEditDeal";
             this.btnEditDeal.Size = new System.Drawing.Size(98, 28);
             this.btnEditDeal.TabIndex = 9;
@@ -308,7 +308,7 @@
             this.btnDeleteDeal.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnDeleteDeal.ForeColor = System.Drawing.Color.White;
             this.btnDeleteDeal.Location = new System.Drawing.Point(847, 352);
-            this.btnDeleteDeal.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnDeleteDeal.Margin = new System.Windows.Forms.Padding(2);
             this.btnDeleteDeal.Name = "btnDeleteDeal";
             this.btnDeleteDeal.Size = new System.Drawing.Size(118, 28);
             this.btnDeleteDeal.TabIndex = 10;
@@ -360,7 +360,7 @@
             this.dgvInteractions.EnableHeadersVisualStyles = false;
             this.dgvInteractions.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(223)))), ((int)(((byte)(228)))));
             this.dgvInteractions.Location = new System.Drawing.Point(11, 412);
-            this.dgvInteractions.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvInteractions.Margin = new System.Windows.Forms.Padding(2);
             this.dgvInteractions.MultiSelect = false;
             this.dgvInteractions.Name = "dgvInteractions";
             this.dgvInteractions.ReadOnly = true;
@@ -370,6 +370,7 @@
             this.dgvInteractions.Size = new System.Drawing.Size(951, 179);
             this.dgvInteractions.TabIndex = 4;
             this.dgvInteractions.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvInteractions_CellContentClick);
+            this.dgvInteractions.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvInteractions_CellFormatting);
             // 
             // colIntType
             // 
@@ -406,7 +407,7 @@
             this.btnAddInteraction.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnAddInteraction.ForeColor = System.Drawing.Color.White;
             this.btnAddInteraction.Location = new System.Drawing.Point(633, 599);
-            this.btnAddInteraction.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAddInteraction.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddInteraction.Name = "btnAddInteraction";
             this.btnAddInteraction.Size = new System.Drawing.Size(108, 28);
             this.btnAddInteraction.TabIndex = 6;
@@ -422,7 +423,7 @@
             this.btnEditInteraction.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnEditInteraction.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(32)))), ((int)(((byte)(36)))));
             this.btnEditInteraction.Location = new System.Drawing.Point(745, 599);
-            this.btnEditInteraction.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnEditInteraction.Margin = new System.Windows.Forms.Padding(2);
             this.btnEditInteraction.Name = "btnEditInteraction";
             this.btnEditInteraction.Size = new System.Drawing.Size(98, 28);
             this.btnEditInteraction.TabIndex = 11;
@@ -438,7 +439,7 @@
             this.btnDeleteInteraction.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnDeleteInteraction.ForeColor = System.Drawing.Color.White;
             this.btnDeleteInteraction.Location = new System.Drawing.Point(847, 599);
-            this.btnDeleteInteraction.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnDeleteInteraction.Margin = new System.Windows.Forms.Padding(2);
             this.btnDeleteInteraction.Name = "btnDeleteInteraction";
             this.btnDeleteInteraction.Size = new System.Drawing.Size(118, 28);
             this.btnDeleteInteraction.TabIndex = 12;
@@ -454,7 +455,7 @@
             this.btnEdit.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnEdit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(32)))), ((int)(((byte)(36)))));
             this.btnEdit.Location = new System.Drawing.Point(757, 115);
-            this.btnEdit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnEdit.Margin = new System.Windows.Forms.Padding(2);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(98, 28);
             this.btnEdit.TabIndex = 7;
@@ -470,7 +471,7 @@
             this.btnBack.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnBack.ForeColor = System.Drawing.Color.White;
             this.btnBack.Location = new System.Drawing.Point(867, 115);
-            this.btnBack.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnBack.Margin = new System.Windows.Forms.Padding(2);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(98, 28);
             this.btnBack.TabIndex = 8;
@@ -499,7 +500,7 @@
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.btnBack);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.Name = "ClientDetailForm";
             this.Text = "Client Details";
