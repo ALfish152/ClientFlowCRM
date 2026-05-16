@@ -43,14 +43,18 @@ namespace ClientFlowCRM
         {
             dgvDeals.AutoGenerateColumns = false;
             dgvDeals.Columns.Clear();
-            dgvDeals.DataSource = null;  // Unbind before reconfiguring
+            dgvDeals.DataSource = null;
 
             var columns = new (string Name, string Header, string DataProperty, int WidthPercent)[]
             {
-        ("colTitle",       "Title",           "Title",          35),
-        ("colValue",       "Value (₱)",       "Value",          20),
-        ("colStage",       "Stage",           "Stage",          25),
-        ("colProbability", "Win Probability", "WinProbability", 20)
+        ("colTitle",       "Title",           "Title",          25),
+        ("colValue",       "Value (₱)",       "Value",          15),
+        ("colStage",       "Stage",           "Stage",          15),
+        ("colProbability", "Win Probability", "WinProbability", 12),
+        ("colDate",        "Date",            "CreatedDate",    15),
+        ("colIsActive",    "Status",          "IsActive",       8),
+        ("colId",          "ID",              "Id",              5),
+        ("colClientId",    "Client ID",       "ClientId",        5)
             };
 
             foreach (var col in columns)
@@ -65,10 +69,21 @@ namespace ClientFlowCRM
 
             dgvDeals.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
+            if (dgvDeals.Columns["colId"] != null)
+                dgvDeals.Columns["colId"].Visible = false;
+            if (dgvDeals.Columns["colClientId"] != null)
+                dgvDeals.Columns["colClientId"].Visible = false;
+
             if (dgvDeals.Columns["colValue"] != null)
                 dgvDeals.Columns["colValue"].DefaultCellStyle.Format = "N2";
             if (dgvDeals.Columns["colProbability"] != null)
                 dgvDeals.Columns["colProbability"].DefaultCellStyle.Format = "0%";
+            if (dgvDeals.Columns["colDate"] != null)
+                dgvDeals.Columns["colDate"].DefaultCellStyle.Format = "MMM dd, yyyy";
+            if (dgvDeals.Columns["colIsActive"] != null)
+            {
+                dgvDeals.Columns["colIsActive"].DefaultCellStyle.Format = "";
+            }
         }
 
         private void ConfigureInteractionsGrid()
@@ -202,7 +217,6 @@ namespace ClientFlowCRM
             {
                 form.DealData.Id = _nextDealId++;
                 form.DealData.ClientId = _client.Id;
-                form.DealData.CreatedDate = DateTime.Now;
                 form.DealData.UpdateCalculatedFields();
                 _client.Deals.Add(form.DealData);
                 _client.UpdateCalculatedFields();
@@ -226,6 +240,7 @@ namespace ClientFlowCRM
                 selected.Title = form.DealData.Title;
                 selected.Value = form.DealData.Value;
                 selected.Stage = form.DealData.Stage;
+                selected.CreatedDate = form.DealData.CreatedDate; 
                 selected.UpdateCalculatedFields();
                 _client.UpdateCalculatedFields();
                 LoadData();
@@ -372,6 +387,18 @@ namespace ClientFlowCRM
                 else if (e.Value is int dur && dur > 0)
                 {
                     e.Value = $"{dur} min";
+                    e.FormattingApplied = true;
+                }
+            }
+        }
+
+        private void dgvDeals_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvDeals.Columns[e.ColumnIndex].Name == "colIsActive")
+            {
+                if (e.Value is bool isActive)
+                {
+                    e.Value = isActive ? "Active" : "Closed";
                     e.FormattingApplied = true;
                 }
             }

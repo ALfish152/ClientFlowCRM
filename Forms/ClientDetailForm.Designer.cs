@@ -231,6 +231,7 @@
             this.dgvDeals.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDeals.Size = new System.Drawing.Size(951, 179);
             this.dgvDeals.TabIndex = 2;
+            this.dgvDeals.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDeals_CellFormatting);
             // 
             // colDealTitle
             // 

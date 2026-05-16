@@ -13,6 +13,7 @@ namespace ClientFlowCRM
         {
             InitializeComponent();
             cmbStage.SelectedIndex = 0;
+            dtpCloseDate.Value = DateTime.Today;  
             this.Text = "Add New Deal";
             lblTitle.Text = "Add New Deal";
             lblClientName.Text = "Client: " + clientName;
@@ -28,8 +29,8 @@ namespace ClientFlowCRM
 
             txtTitle.Text = existingDeal.Title;
             numValue.Value = existingDeal.Value;
+            dtpCloseDate.Value = existingDeal.CreatedDate; 
 
-            
             for (int i = 0; i < cmbStage.Items.Count; i++)
             {
                 if (cmbStage.Items[i].ToString() == existingDeal.Stage)
@@ -42,7 +43,6 @@ namespace ClientFlowCRM
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            // Validate Title
             if (string.IsNullOrWhiteSpace(txtTitle.Text))
             {
                 MessageBox.Show("Title is required.", "Validation",
@@ -51,7 +51,6 @@ namespace ClientFlowCRM
                 return;
             }
 
-            // Validate Stage
             if (cmbStage.SelectedIndex == -1)
             {
                 MessageBox.Show("Please select a stage.", "Validation",
@@ -60,27 +59,12 @@ namespace ClientFlowCRM
                 return;
             }
 
-            // Validate Close Date is not in the past
-            if (dtpCloseDate.Value.Date < DateTime.Today)
-            {
-                var confirm = MessageBox.Show(
-                    "The close date is in the past. Continue anyway?",
-                    "Date Warning",
-                    MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Question);
-
-                if (confirm == DialogResult.No)
-                {
-                    dtpCloseDate.Focus();
-                    return;
-                }
-            }
-
             DealData = new Deal
             {
                 Title = txtTitle.Text.Trim(),
                 Value = numValue.Value,
                 Stage = cmbStage.SelectedItem.ToString(),
+                CreatedDate = dtpCloseDate.Value  
             };
 
             DealData.UpdateCalculatedFields();

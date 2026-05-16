@@ -10,8 +10,8 @@ namespace ClientFlowCRM.Models
         public decimal Value { get; set; }
         public string Stage { get; set; }
         public DateTime CreatedDate { get; set; }
-        public double WinProbability { get; set; } 
-        public bool IsActive { get; set; } 
+        public double WinProbability { get; set; }
+        public bool IsActive { get; set; }
 
         public Deal()
         {
